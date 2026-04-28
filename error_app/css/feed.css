@@ -1,0 +1,122 @@
+.main-feed {
+    position: relative;
+    margin: 4px;
+}
+.post {
+    position: absolute;
+}
+.post:hover {
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.size-portrait-t1 {
+    width: 18vw;
+    height: 36vw;
+}
+.size-portrait-t1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-portrait-t2 {
+    width: 13vw;
+    height: 26vw;
+}
+.size-portrait-t2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-lands-t1 {
+    width: 36vw;
+    height: 18vw;
+}
+.size-lands-t1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-lands-t2 {
+    width: 26vw;
+    height: 13vw;
+}
+.size-lands-t2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-square-t1 {
+    width: 18vw;
+    height: 18vw;
+}
+.size-square-t1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.size-square-t2 {
+    width: 13vw;
+    height: 13vw;
+}
+.size-square-t2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*      PLACEHOLDER     */
+
+.example {
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+  /*  margin: 4px; */
+    align-content: flex-end;
+    padding: 8px;
+}
+
+.type1 {
+    position: absolute;
+    width: 220px;
+    height: 320px;
+}
+
+.type2 {
+    position: absolute;
+    width: 320px;
+    height: 180px;
+}
+
+.type3 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+}
+
+.type4 {
+    position: absolute;
+    width: 180px;
+    height: 320px;
+}
+
+/*.grid-sizer {
+    width: 30vw;
+} */
+
+
+.image-placeholder1 {
+    all: unset;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.feed-title {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.image-placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*      PLACEHOLDER     */

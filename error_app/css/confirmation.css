@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+}
+
+.done-title {
+    color: white;
+}
+.done-text {
+    color: white;
+}
+.to-login {
+    cursor: pointer;
+}

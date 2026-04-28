@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+    .upload-elements {
+        flex-direction: column;
+    }
+    
+    .media {
+        width: 90vw;
+        height: 105vw;
+    }
+    
+    .text-inputs {
+        margin-left: 0;
+        margin-top: 16px;
+        width: 90vw;
+    }
+    
+    .post-title {
+        height: 12vw;
+    }
+    
+    .post-desc {
+        height: 40vw;
+    }
+    
+    .post-tags {
+        height: 30vw;
+    }
+}

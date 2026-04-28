@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        
+      
+        
+        <style>
+        
+            body{
+                background-color: black;
+            }
+            .top-bar{
+                display: flex;
+                align-items: flex-start; 
+                position: relative;
+                justify-content: space-between;
+                margin: 16px 8px;
+            }
+            
+/*      SEARCH      */       
+            
+            .search-filters{
+                display: none;
+            }
+            
+            .search-area{
+                background-color: white;
+                padding: 8px 20px;
+                width: 260px;
+            }
+            
+            .search-input{
+                all: unset;
+                border: none;
+                width: 200px;
+            }
+            .search-area:focus-within .search-filters {
+                display: block;
+                margin-top: 12px;
+            }
+            
+            .search-area:focus-within {
+                height: fit-content;
+            }
+            
+            .tag-example{
+                all: unset;
+                cursor: pointer;
+                background-color: black;
+                color: white;  
+                padding: 4px 24px;
+                margin: 2px;
+                position: relative;
+            }
+            
+            .filter-tags{
+                margin-top: 8px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            
+            .placeholder{
+                all: unset;
+                background-color: black;
+                width: 60px;
+                height: 18px;
+                display: inline-block;
+                cursor: pointer;
+            }
+            
+            .search-bar{
+                display: flex;
+                justify-content: center;
+            }
+            
+/*      SEARCH      */ 
+
+            .add-post{
+                all: unset;
+                background-color: white;
+                color: black;
+                padding: 8px 28px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                cursor: pointer;
+            }
+            
+            .user-account{
+                all: unset;
+                color: white;
+                padding: 8px 20px;
+                cursor: pointer;
+            }
+            
+/*      POSTS       */
+            
+            .main-feed{
+             /*   display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between; */
+                position: relative;
+                margin: 16px auto;
+            } 
+            .example{
+                background-color: aqua;
+                width: 100px;
+                height: 100px;
+                margin: 4px;
+                align-content: flex-end;
+                padding: 8px;
+            }
+            .type1{
+                width: 220px;
+                height: 320px;
+            }
+            .type2{
+                width: 320px;
+                height: 180px;
+            }
+            .type3{
+                width: 320px;
+                height: 320px;
+            }
+            .type4{
+                width: 180px;
+                height: 320px;
+            }
+            .grid-sizer{
+                width: 30vw;
+            }
+        </style>
+        
+        
+    </head>
+    
+    <body>
+
+<!--    HEADER   -->        
+
+            <div class="top-bar" id="topBar">
+            <div class="search-area" id="search">
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+                    <button class="placeholder" tabindex="-1"></button>
+                </div>
+                
+                <div class="search-filters" id="searchFilters">
+                    <div class="filter-label">FILTER</div>
+                    <div class="filter-tags">      
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                        <button class="tag-example">TAG</button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <button class="add-post" id="addPost">CREATE</button>
+            <button class="user-account" id="userAccount">Username</button>
+            
+        </div>
+        
+        
+<!--    MAIN FEED   -->        
+        
+        
+        <div class="main-feed" id="main">
+        
+            <div class="grid-sizer"></div>
+            
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            
+        </div>
+        
+
+<!--    USER PROFILE   -->                
+
+    <div class="profile-container" id="profile" hidden>
+        
+        <button class="back" id="back"></button>
+        <div class="user-avatar" id="userAvatar"></div>
+        <div class="user-name" id="userName"></div>
+        
+        <div class="profile-tabs" id="profileTabs">
+            <button class="show-posts" id="showPosts" data-target="userPosts"></button>
+            <button class="show-saved" id="showSaved" data-target="userSaved"></button>
+        </div>
+        
+        <div class="user-posts" id="userPosts"></div>
+        <div class="user-saved" id="userSaved" hidden></div>
+        
+    </div>
+        
+<!--    ADD POST   -->        
+        
+    <div class="add-container" id="addContainer" hidden>
+        
+        <input type="text" class="post-title" id="postTitle">
+        <textarea class="post-desc" id="desc"></textarea>
+        
+        <div class="post-tags" id="postTags">
+            <div class="tag-cards" id="tagCards"></div>
+            <input type="text" class="tag-input" id="tagInput">
+            <ul class="suggestions"></ul>
+        </div>
+        
+        <div class="media">
+            <input type="file" class="media-upload" multiple accept="image/*" hidden>
+            <button class="add_media"></button>
+            <div class="drop_zone"></div>
+            <div class="preview"></div>
+        </div>
+        
+        <button class="upload-button" id="uploadButton"></button>
+        
+    </div>
+        
+<!--    VIEW POST   -->        
+
+    <div class="view-container" id="viewContainer" hidden>
+        
+        <div class="view-title" id="viewTitle"></div>
+        <div class="view-desc" id="viewDesc"></div>
+        <div class="view-tags" id="viewTags"></div>
+        <div class="view-media" id="viewMedia"></div>
+        
+    </div>
+    
+        
+<!--    MASONRY   -->        
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
+    <script>
+        const masonry = new Masonry('#main', {
+                itemSelector: '.example',
+                columnWidth: 358,
+                gutter: 8,
+                fitWidth: true
+            });
+    </script>
+        
+    <script>
+        
+    function showPage(pageId) {
+            document.getElementById('main').hidden = true;
+            document.getElementById('profile').hidden = true;
+            document.getElementById('addContainer').hidden = true;
+            document.getElementById('viewContainer').hidden = true;
+            
+            document.getElementById(pageId).hidden = false;
+        }    
+        
+        document.getElementById('addPost').addEventListener('click', () => showPage('addContainer'));
+        document.getElementById('userAccount').addEventListener('click', () => showPage('profile'));
+        
+    </script>
+        
+    </body>
+</html>

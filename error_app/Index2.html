@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        
+        <link href="css/landing-page.css" rel="stylesheet" type="text/css">
+        
+    </head>
+    
+    <body>
+   
+            
+        <div class="signup-container" id="signupContainer">            
+            <div class="signup-elements">
+                <div class="signup-title">Sign Up</div>
+                <input type="text" id="signupUn" placeholder="Username">
+                <input type="password" id="signupPw" placeholder="Password">
+                <input type="password" id="signupPw2" placeholder="Password again">
+                <input type="text" id="signupEmail" placeholder="E-mail">
+                <div class="tos-wrap">
+                    <input type="checkbox" id="tosCheck" class="tos-check">
+                    <label for="tosCheck" class="tos-label">I accept the Terms of Service</label>                    
+                </div>
+                <button class="signup">Sign Up!</button>
+                <button class="signin-window" id="signinWindow">Already have an account?</button>
+            </div>
+        </div>
+        
+        
+        <div class="signin-container" id="signinContainer" hidden>
+            <div class="signin-elements">
+                <div class="signin-title">Sign In</div>
+                <div class="back-to-signup" id="backToSignup">&lt;-</div>
+                <input type="text" placeholder="E-mail address">
+                <input type="password" placeholder="Password">
+                <div class="remember">Remember this device!</div> <!--needs to be a toggle-->
+                <button class="signin">Sign In!</button>
+            </div>
+        </div>
+            
+        <div class="conf-cont" id="confCont" hidden>
+            <div class="conf-elements">
+                <div class="conf-title">Confirm Email</div>
+                <div class="conf-text">We have sent you a confirmation link. Please check your emails and click it to finish signing up!</div>
+                <button class="conf-back" id="confBack">Back to Sign Up</button>
+            </div>
+        </div>
+        
+        <script>
+        
+            function showPage(pageId) {
+                document.getElementById('signupContainer').hidden = true;
+                document.getElementById('signinContainer').hidden = true;
+                document.getElementById('confCont').hidden = true;
+
+                document.getElementById(pageId).hidden = false;
+        
+            }
+                
+            document.getElementById('signinWindow').addEventListener('click', () => showPage('signinContainer'));
+            document.getElementById('backToSignup').addEventListener('click', () => showPage('signupContainer'));
+            document.getElementById('confBack').addEventListener('click', () => showPage('signupContainer'));
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/database.js"></script>
+        <script src="js/landingPage.js"></script>
+    </body>
+</html>

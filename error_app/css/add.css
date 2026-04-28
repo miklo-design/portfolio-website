@@ -1,0 +1,240 @@
+.upload-elements {
+    display: flex;
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    margin-top: 72px;
+    box-sizing: border-box;
+}
+/*-----MEDIA-----*/
+.media {
+    width: 30vw;
+    height: 35vw;
+    flex-shrink: 0;
+}
+.drop-zone {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+/* .drop-zone:hover {
+    box-shadow: inset 0 0 56px rgba(0, 0, 0, 0.3);
+} */
+.drop-zone:hover .upload-label {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    box-shadow: inset 0 0 64px rgba(0, 0, 0, 0.8);
+}
+
+.upload-label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #555;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-preview {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.upload-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.upload-strip {
+    background-color: gray;
+    margin-top: 8px;
+    padding-left: 8px;
+    width: calc(100% - 8px);
+    height: 15%;
+    overflow: auto;
+    border-radius: 2px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+}
+.upload-strip:not([hidden]) {
+    display: flex;
+}
+.upload-strip::-webkit-scrollbar {
+    display: none;
+}
+.upload-strip:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 72px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.upload-thumbnail {
+    margin: 8px 8px 8px 0;
+    width: 5vw;
+    flex-shrink: 0;
+    cursor: grab;
+    overflow: hidden;
+    border-radius: 2px; 
+}
+.upload-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.upload-thumbnail.selected {
+    outline: 2px solid #000000;
+}
+.upload-thumbnail.dragging {
+    opacity: 0.4;
+    cursor: grabbing;
+}
+/*.upload-overlay {
+    background-color: red; 
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}*/
+
+/*-----TEXT-----*/
+.text-inputs {
+    margin-left: 16px;
+    flex: 1;
+    min-width: 0;
+    max-width: 640px;
+    overflow: hidden;
+}
+.post-title {
+    all: unset;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 8px;
+    width: 100%;
+    height: 1vw;
+    margin-bottom: 8px;
+    border-radius: 2px;
+}
+.post-desc {
+    all: unset;
+    resize: none;
+    display: block;
+    background-color: white;
+    padding: 8px;
+    width: 100%;
+    height: 12vw;
+    margin-bottom: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    border-radius: 2px;
+}
+
+/*-----TAGS-----*/
+
+.post-tags {
+    background-color: white;
+    padding: 8px;
+    width: 100%;
+    height: 8vw;
+    margin-bottom: 8px;
+    border-radius: 2px;
+}
+.tag-input {
+    all: unset;
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px 4px 2px 4px;
+    border-radius: 2px;
+}
+.tag-input-sizer {
+    position: absolute;
+    visibility: hidden;
+    box-sizing: border-box;
+    white-space: pre;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 2px 4px;
+}
+.suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: #3f3f3f;
+    color: white;
+    max-height: 160px;
+    overflow-y: auto;
+    z-index: 1;
+    min-width: 3vw;
+}
+
+.suggestion-item {
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+.suggestion-item:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+.tag-card {
+    display: inline-flex;
+    align-items: center;
+    background-color: lightgray;
+    padding: 2px 6px;
+    margin: 2px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    border-radius: 2px;
+}
+
+.tag-card-delete {
+    all: unset;
+    margin-left: 4px;
+    cursor: pointer;
+    opacity: 0;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.tag-card:hover .tag-card-delete {
+    opacity: 1;
+}
+
+
+/*-----UPLOAD BUTTON-----*/
+
+.upload-button {
+    all: unset;
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    padding: 8px;
+    cursor: pointer;
+}
+.upload-button:hover {
+    background-color: #222;
+    color: white;
+}

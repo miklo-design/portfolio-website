@@ -1,0 +1,134 @@
+.view-elements {
+    margin: 40px 8px 8px 8px;
+    display: flex;
+
+}
+
+/*-----MEDIA-----*/
+
+.media-elements {
+    display: flex;
+    max-height: calc(100vh-60px);
+    max-width: 50vw;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.view-media-container {
+    display: inline-block;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    max-height: 75vh;
+}
+.view-media {
+    max-width: min(800px, 55vw);
+    max-height: 75vh;
+}
+.view-media img {
+    max-width: 100%;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+.media-arrow {
+    all: unset;
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    padding: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3)
+}
+#prevMedia {
+    left: 0;
+}
+#nextMedia {
+    right: 0;
+}
+.view-media-container:hover .media-arrow {
+    opacity: 1;
+}
+.media-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+.media-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #555;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.media-dot-active {
+    background-color: white;
+}
+
+/*-----TEXT-----*/
+
+.view-text {
+    margin-left: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: calc(50vw + 16px);
+}
+.view-title {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: xx-large;
+    font-weight: 600;
+}
+.view-desc {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 16px;
+    font-size: medium;
+}
+.view-tags {
+    display: flex;
+    margin-top: 16px;
+}
+.tag {
+    background-color: lightgray;
+    width: fit-content;
+    padding: 0 8px 0 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 1px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+.view-author {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 600;
+    position: relative;
+    margin-top: auto;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.save {
+    all: unset;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+}
+.save.saved {
+    background-color: white;
+    color: black;
+}

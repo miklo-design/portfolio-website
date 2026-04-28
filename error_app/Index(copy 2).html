@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        
+        <link href="css/header.css" rel="stylesheet" type="text/css">
+        <link href="css/feed.css" rel="stylesheet" type="text/css">
+        <link href="css/add.css" rel="stylesheet" type="text/css"> 
+        <link href="css/profile.css" rel="stylesheet" type="text/css">
+        <link href="css/view.css" rel="stylesheet" type="text/css">
+        <link href="css/mobile-view.css" rel="stylesheet" type="text/css">
+        
+        
+        <style>
+            body{
+                background-color: black;
+            }
+            .close {
+                all: unset;
+                background-color: white;
+                cursor: pointer;
+                display: block;
+                margin-left: auto;
+                position: relative;
+            }
+        </style>
+        
+    </head>
+    
+    <body>
+
+<!--    HEADER   -->        
+
+        <div class="header" id="header">
+            
+            <div class="logoPlaceholder"></div>
+            
+            <div class="acc-cont" id="accCont">
+                <button class="user-account" id="userAccount"></button>
+                <div class="acc-dropdown" id="accDropdown">
+                    <button class="acc-btn profile-btn" id="profileBtn">Profile</button>
+                    <button class="acc-btn settings-btn" id="settingsBtn">Settings</button>
+                    <button class="acc-btn logout-btn" id="logoutBtn">Log Out</button>
+                </div>
+            </div>            
+            
+            <button class="add-post" id="addPost">CREATE</button>
+            
+            <div class="search-area" id="search">
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+                    <button class="placeholder" tabindex="-1" id="searchBtn"></button>
+                </div>
+                
+                <div class="search-filters" id="searchFilters">
+                    <div class="filter-label">FILTER</div>
+                    <div class="filter-tags" id="filterTags"></div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+<!--    MAIN FEED   -->        
+        
+        
+        <div class="main-feed" id="main">
+        
+         <!--   <div class="grid-sizer"></div> -->
+        <!--    <div class="post size-lands-t1">
+                <img src="images/test.png">
+            </div>
+            <div class="post size-lands-t2">
+                <img src="images/test.png">
+            </div>
+            <div class="post size-portrait-t1">
+                <img src="images/test.png">
+            </div>
+            <div class="post size-portrait-t2">
+                <img src="images/test.png">
+            </div>
+            <div class="post size-square-t1">
+                <img src="images/test.png">
+            </div>
+            <div class="post size-square-t2">
+                <img src="images/test.png">
+            </div> -->
+            
+        <!--    <div class="example type1">
+                <button class="image-placeholder1" id="exampleId">"Image Placeholder"</button>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type4">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type2">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type1">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div>
+            <div class="example type3">
+                <div class="image-placeholder">"Image Placeholder"</div>
+                <div class="feed-title">TITLE</div>
+            </div> -->
+            
+        </div>
+        
+
+<!--    USER PROFILE   -->                
+
+        <div class="profile-container" id="profile" hidden>
+        
+        <button class="close" id="closeProfile">BACK</button>
+        
+        <div class="profile-elements">
+            <div class="user-cont"> 
+                <div class="user-avatar" id="userAvatar">
+                <button class="edit-trigger" id="editAvatar">✎</button>
+                </div>
+                    <div class="name-bio">
+                        <div class="user-name" id="userName">
+                            <span id="userNameText"></span>
+                            <button class="edit-trigger" id="editUsername">✎</button>
+                        </div>
+                        <div class="user-bio" id="userBio">
+                            <span id="userBioText"></span>
+                            <button class="edit-trigger" id="editBio">✎</button>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="p-tab-switch" id="profileTabs">
+                <button class="posts-saved" id="showPosts" data-target="userPosts">POSTS</button>
+                <div class="spacer"></div>
+                <button class="posts-saved" id="showSaved" data-target="userSaved">SAVED</button>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="user-posts" id="userPosts"></div>
+                <div class="user-saved" id="userSaved" hidden></div>
+            </div>
+            
+        </div>
+        
+    </div>
+        
+<!--    ADD POST   -->        
+        
+        <div class="add-container" id="addContainer" hidden>
+        
+        <button class="close" id="closeAdd">BACK</button>
+
+        
+        <div class="upload-elements">       
+            <div class="media" id="media">
+                <input type="file" class="media-upload" id="mediaUpload" multiple accept="image/*" hidden>
+                
+                <div class="drop-zone" id="dropZone">
+                    <div class="upload-label" id="uploadLabel">Drag image here</div>
+                    <div class="upload-preview" id="uploadPreview"></div>
+                <!--    <div class="upload-overlay" id="uploadOverlay"></div> -->
+                </div>
+                
+                <div class="upload-strip" id="uploadStrip" hidden>
+                </div>
+            </div>        
+
+
+
+            <div class="text-inputs"> 
+                <input type="text" class="post-title" placeholder="TITLE" id="postTitle">
+                <textarea class="post-desc" id="desc" placeholder="Description"></textarea>
+
+                <div class="post-tags" id="postTags">
+                    <div class="tag-cards" id="tagCards"></div>
+                    <input type="text" class="tag-input" id="tagInput" placeholder="Add Tag...">
+                    <span class="tag-input-sizer"></span>
+                    <ul class="suggestions"></ul>
+                </div>
+
+                <button class="upload-button" id="uploadButton">UPLOAD</button>
+            </div>
+        </div>        
+    </div>
+        
+<!--    VIEW POST   -->        
+
+        <div class="view-container" id="viewContainer" hidden>
+        
+        <button class="close" id="closeView">BACK</button>
+        
+        <div class="view-elements">
+            
+            <div class="media-elements">
+                <div class="view-media-container">
+                    <button class="media-arrow" id="prevMedia">&#8592;</button>
+                    <div class="view-media" id="viewMedia"></div>
+                    <button class="media-arrow" id="nextMedia">&#8594;</button>
+                </div>
+
+                <div class="media-dots" id="mediaDots"></div>
+            </div>
+            
+            <div class="view-text" id="viewText">            
+                <div class="view-title" id="viewTitle"></div>
+                <div class="view-desc" id="viewDesc"></div>
+                <div class="view-tags" id="viewTags"></div>
+                <div class="view-author" id="viewAuthor"></div>
+            </div>
+            
+            <button class="save" id="save">SAVE</button>
+        </div>
+
+    </div>
+    
+<!--    SETTINGS   -->
+        
+        <div class="settings-container" id="settingsContainer" hidden>
+            
+            <button class="close" id="closeSettings">BACK</button>
+
+            <div class="settings-elements">
+                <div class="email-change" id="emailChange">
+                    <div class="change-label">Your current email address:</div>
+                    <input class="change-input" id="oldEmail" type="text" placeholder="example@example.com">
+                    <div class="change-label">Your new email address:</div>
+                    <input class="change-input" id="newEmail" type="text" placeholder="example@example.com">
+                </div>
+                <div class="pw-change" id="pwChange">
+                    <div class="change-label">Your current password:</div>
+                    <input class="change-input" id="oldPw" type="password" placeholder="Old Password">
+                    <div class="change-label">Your new password:</div>
+                    <input class="change-input" id="newPw" type="text" placeholder="New Password">
+                    <div class="change-label">Your new password again:</div>
+                    <input class="change-input" id="newPw2" type="text" placeholder="New Password Again">
+                </div>
+                <div class="delete-cont" id="deleteCont">
+                    <button class="delete-acc" id="deleteAcc"></button>
+                    <div class="delete-conf" id="delete-conf" hidden>
+                        <div class="conf-label">Are you sure you want to permanently delete your account?</div>
+                        <button class="del-final" id="delFinal">Delete Account</button>
+                        <button class="del-cancel" id="delCancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--    TAB SWITCH   -->   
+
+        <script>
+            
+        function showPage(pageId) {
+            document.getElementById('main').hidden = true;
+            document.getElementById('profile').hidden = true;
+            document.getElementById('addContainer').hidden = true;
+            document.getElementById('viewContainer').hidden = true;
+            document.getElementById('settingsContainer').hidden = true;
+            
+            document.getElementById(pageId).hidden = false;
+        
+            if (pageId === 'addContainer') {
+            setTimeout(resizeInput, 0);
+            }  
+        }  
+            
+            // opens page
+            document.getElementById('addPost').addEventListener('click', () => showPage('addContainer'));
+            document.getElementById('settingsBtn').addEventListener('click', () => showPage('settingsContainer'));
+            document.getElementById('profileBtn').addEventListener('click', () => showPage('profile'));
+            document.getElementById('profileBtn').addEventListener('click', async () => {
+                const { data: { session } } = await db.auth.getSession();
+                if (session) openProfile(session.user.id);
+            });
+            
+            // closes page
+            document.getElementById('closeAdd').addEventListener('click', () => showPage('main'));
+            document.getElementById('closeProfile').addEventListener('click', () => showPage('main'));
+            document.getElementById('closeView').addEventListener('click', () => showPage('main'));
+            document.getElementById('closeSettings').addEventListener('click', () => showPage('main'));
+            
+            document.getElementById('showPosts').addEventListener('click', () => showTab('userPosts'));
+            document.getElementById('showSaved').addEventListener('click', async () => {
+                showTab('userSaved');
+                if (document.getElementById('userSaved').innerHTML === '') {
+                    await loadSavedPosts(currentProfileId);
+                }
+            });
+    
+            function showTab(tabId) {
+                document.getElementById('userPosts').hidden = true;
+                document.getElementById('userSaved').hidden = true;
+                document.getElementById(tabId).hidden = false;
+            }   
+            
+        </script>
+        
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="js/database.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/profile.js"></script>
+        <script src="js/tagData.js"></script>
+        <script src="js/postTags.js"></script>
+        <script src="js/mediaUpload.js"></script>
+        <script src="js/uploadPost.js"></script>
+        <script src="js/search.js"></script>
+<!--        <script src="js/searchTags.js"></script> -->
+        <script src="js/feedPositioning2.js"></script>  
+        <script src="js/feedFetch.js"></script>
+        <script src="js/openPost.js"></script>
+        <script src="js/savePost.js"></script>
+    
+    
+
+    </body>
+</html>

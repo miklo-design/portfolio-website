@@ -1,0 +1,66 @@
+.settings-elements {
+    margin: 8px;
+}
+.change-label {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+.change-input-e {
+    all: unset;
+    background-color: white;
+    color: black;
+    min-width: 220px;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+}
+.change-input-p {
+    all: unset;
+    background-color: white;
+    color: black;
+    min-width: 100px;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+}
+.change-btn {
+    all: unset;
+    display: block;
+    background-color: white;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin-top: 16px;
+    cursor: pointer;
+}
+.email-change {
+    margin-bottom: 32px;
+}
+.pw-change {
+    margin-bottom: 32px;
+}
+.del-btn {
+    background-color: #ffd5d5;
+    color: #c30000;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+.conf-label {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin-bottom: 4px;
+}
+.del-btns {
+    display: flex;
+}
+#delFinal, #delCancel {
+    margin-top: 0;
+}
