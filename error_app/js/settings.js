@@ -6,18 +6,20 @@ document.getElementById('emailChBtn').addEventListener('click', async () => {
     const newEmail = document.getElementById('newEmail').value.trim();
 
     if (!newEmail) {
-        alert('Please enter a new email address');
+        showNotification('message', 'error');
+//        alert('Please enter a new email address');
         return;
     }
 
     const { error } = await db.auth.updateUser({ email: newEmail });
 
     if (error) {
-        alert('Email change failed: ' + error.message);
+        showNotification('message', 'error');
+//        alert('Email change failed: ' + error.message);
         return;
     }
-
-    alert('Confirmation sent to your new email address. Click the link to confirm the change.');
+    showNotification('message', 'success');
+//    alert('Confirmation sent to your new email address. Click the link to confirm the change.');
     document.getElementById('newEmail').value = '';
     document.getElementById('oldEmail').value = '';
 });
@@ -32,17 +34,20 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
     const newPw2 = document.getElementById('newPw2').value;
 
     if (!oldPw || !newPw || !newPw2) {
-        alert('Please fill in all password fields');
+        showNotification('message', 'error');
+//        alert('Please fill in all password fields');
         return;
     }
 
     if (newPw !== newPw2) {
-        alert('New passwords do not match');
+        showNotification('message', 'error');
+//        alert('New passwords do not match');
         return;
     }
 
     if (newPw.length < 6) {
-        alert('Password must be at least 6 characters');
+        showNotification('message', 'error');
+//        alert('Password must be at least 6 characters');
         return;
     }
 
@@ -55,18 +60,20 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
     });
 
     if (signInError) {
-        alert('Current password is incorrect');
+        showNotification('message', 'error');
+//        alert('Current password is incorrect');
         return;
     }
 
     const { error } = await db.auth.updateUser({ password: newPw });
 
     if (error) {
-        alert('Password change failed: ' + error.message);
+        showNotification('message', 'error');
+//        alert('Password change failed: ' + error.message);
         return;
     }
-
-    alert('Password changed successfully');
+    showNotification('message', 'success');
+//    alert('Password changed successfully');
     document.getElementById('oldPw').value = '';
     document.getElementById('newPw').value = '';
     document.getElementById('newPw2').value = '';
@@ -95,7 +102,8 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     });
 
     if (error) {
-        alert('Account deletion failed: ' + error.message);
+        showNotification('message', 'error');
+//        alert('Account deletion failed: ' + error.message);
         return;
     }
 

@@ -54,7 +54,17 @@ const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
 async function handleFiles(newFiles) {
     console.log('handleFiles works');
     
-    const validFiles = Array.from(newFiles).filter(f => allowedTypes.includes(f.type));
+    const validFiles = Array.from(newFiles).filter(f => {
+        if (!allowedTypes.includes(f.type)) {
+            showNotification(`${f.name} is not a supported format. Use JPG, PNG or WebP.`, 'error');
+            return false;
+        }
+        if (f.size > 20 * 1024 * 1024) {
+            showNotification(`${f.name} is too large. Maximum file size is 20MB.`, 'error');
+            return false;
+        }
+        return true;
+    });
     
     if (validFiles.length === 0) return;
 

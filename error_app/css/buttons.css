@@ -1,0 +1,41 @@
+.btn {
+    border: none;
+    outline: none;
+    color: #1e1e1e;
+    background-color: #f0f0f0;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+}
+.btn:hover {
+    background-color: #505050;
+    color: #f0f0f0;
+}
+.btn:active {
+    background-color: #323232;
+    color: #f0f0f0;
+}
+.card {
+    border: none;
+    outline: none;
+    background-color: #f0f0f0;
+    color: #1e1e1e;
+    width: fit-content;
+    padding: 4px 16px 4px 16px;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: #505050;
+    color: #f0f0f0;
+}
+.card:active {
+    background-color: #323232;
+    color: #f0f0f0;
+}

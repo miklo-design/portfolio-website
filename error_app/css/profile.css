@@ -1,5 +1,5 @@
 .profile-elements {
-    margin: 72px 8px 8px 8px;
+    margin: 16px 8px 8px 8px;
 }
 .user-avatar {
     width: 200px;
@@ -11,6 +11,7 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    z-index: 2;
 }
 .user-avatar img {
     object-fit: contain;
@@ -18,17 +19,19 @@
     height: 100%;
 }
 .user-name {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
-    font-size: x-large;
+    font-family: "Open Sans";
+    color: #f0f0f0;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 24px;
     display: flex;
     align-items: center;
 }
 .user-bio {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0f0f0;
     display: flex;
     align-items: center;
 }
@@ -46,14 +49,18 @@
 }
 .posts-saved {
     all: unset;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #f0f0f0;
+    font-family: "Open Sans";
     font-weight: 100;
     margin-right: 16px;
     cursor: pointer;
 }
+.selected {
+    font-weight: 700;
+}
+
 .spacer {
-    background-color: white;
+    background-color: #f0f0f0;
     width: 2px;
     height: 30px;
     margin-right: 16px;
@@ -84,7 +91,7 @@
 }
 
 #editAvatar {
-    color: white;
+    color: #f0f0f0;
 }
 
 .own-profile .user-name:hover .edit-trigger,
@@ -109,9 +116,9 @@
 }
 .profile-edit-input {
     all: unset;
-    border-bottom: 1px solid white;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #f0f0f0;
+    color: #f0f0f0;
+    font-family: "Open Sans";
     font-size: inherit;
     font-weight: inherit;
     background: transparent;

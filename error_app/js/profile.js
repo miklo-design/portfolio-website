@@ -99,7 +99,8 @@ function editUsername() {
             .maybeSingle();
 
         if (existing) {
-            alert('Username already taken');
+            showNotification('message', 'error');
+            //alert('Username already taken');
             restoreUsername(current);
             return;
         }
@@ -110,7 +111,8 @@ function editUsername() {
             .eq('id', loggedInUserId);
 
         if (error) {
-            alert('Update failed');
+            showNotification('message', 'error');
+//            alert('Update failed');
             restoreUsername(current);
             return;
         }
@@ -176,7 +178,8 @@ function editBio() {
             .eq('id', loggedInUserId);
 
         if (error) {
-            alert('Update failed');
+            showNotification('message', 'error');
+//            alert('Update failed');
             restoreBio(current);
         }
     }
@@ -223,7 +226,10 @@ function editAvatar() {
 
         const blob = await resizeAvatar(file);
         const path = `${loggedInUserId}.jpg`;
-
+        
+        await db.storage
+            .from('avatars')
+            .remove([`${loggedInUserId}.jpg`]);
         const { error: uploadError } = await db.storage
             .from('avatars')
             .upload(path, blob, {
@@ -234,7 +240,8 @@ console.log('upload error:', uploadError);
 console.log('uploading to path:', path);
 console.log('logged in user id:', loggedInUserId);
         if (uploadError) {
-            alert('Avatar upload failed');
+            showNotification('message', 'error');
+//            alert('Avatar upload failed');
             return;
         }
 
@@ -248,7 +255,8 @@ console.log('logged in user id:', loggedInUserId);
             .eq('id', loggedInUserId);
 
         if (updateError) {
-            alert('Profile update failed');
+            showNotification('message', 'error');
+//            alert('Profile update failed');
             return;
         }
 

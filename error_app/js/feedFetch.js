@@ -136,3 +136,11 @@ async function loadFeed() {
 document.addEventListener('DOMContentLoaded', () => {
     loadFeed();
 });
+
+window.addEventListener('resize', () => {
+    const feed = document.getElementById('main');
+    if (!feed.hidden) {
+        feed.innerHTML = '';
+        loadFeed();
+    }
+});

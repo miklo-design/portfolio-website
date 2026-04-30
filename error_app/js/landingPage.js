@@ -1,11 +1,17 @@
 const signinBtn = document.querySelector('.signin');
 
 signinBtn.addEventListener('click', async () => {
+    document.querySelector('.signin-container').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        document.querySelector('.signin').click();
+    }
+});
     const identifier = document.querySelector('.signin-container input[placeholder="E-mail address"]').value.trim();
     const password = document.querySelector('.signin-container input[placeholder="Password"]').value.trim();
 
     if (!identifier || !password) {
-        alert('Please fill in all fields');
+        showNotification('message', 'error');
+        //    alert('Please fill in all fields');
         return;
     }
 
@@ -15,7 +21,8 @@ signinBtn.addEventListener('click', async () => {
     });
 
     if (error) {
-        alert('Sign in failed: ' + error.message);
+        showNotification('message', 'error');
+        //    alert('Sign in failed: ' + error.message);
         return;
     }
 
@@ -32,22 +39,26 @@ document.querySelector('.signup').addEventListener('click', async () => {
 
     // validation
     if (!username || !password || !password2 || !email) {
-        alert('Please fill in all fields');
+        showNotification('message', 'error');
+        //alert('Please fill in all fields');
         return;
     }
 
     if (password !== password2) {
-        alert('Passwords do not match');
+        showNotification('message', 'error');
+        //alert('Passwords do not match');
         return;
     }
 
     if (password.length < 6) {
-        alert('Password must be at least 6 characters');
+        showNotification('message', 'error');
+        //alert('Password must be at least 6 characters');
         return;
     }
 
     if (!tosChecked) {
-        alert('Please accept the Terms of Service');
+        showNotification('message', 'error');
+        //alert('Please accept the Terms of Service');
         return;
     }
 
@@ -59,7 +70,8 @@ document.querySelector('.signup').addEventListener('click', async () => {
         .maybeSingle();
 
     if (existing) {
-        alert('Username already taken');
+        showNotification('message', 'error');
+        //alert('Username already taken');
         return;
     }
 
@@ -75,7 +87,8 @@ document.querySelector('.signup').addEventListener('click', async () => {
     });
 
     if (error) {
-        alert('Sign up failed: ' + error.message);
+        showNotification('message', 'error');
+//        alert('Sign up failed: ' + error.message);
         return;
     }
 

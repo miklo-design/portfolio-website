@@ -5,7 +5,7 @@ uploadBtn.addEventListener('click', async () => {
 });
 
 async function uploadPost() {
-
+    showLoader();
     // -------------------------
     // 1. GRAB ALL INPUT DATA
     // -------------------------
@@ -14,19 +14,22 @@ async function uploadPost() {
     const description = document.getElementById('desc').value.trim();
 
     if (!title) {
-        alert('Please add a title');
+        showNotification('message', 'error');
+//        alert('Please add a title');
         return;
     }
 
     if (files.length === 0) {
-        alert('Please add at least one image');
+        showNotification('message', 'error');
+//        alert('Please add at least one image');
         return;
     }
 
     // get logged in user
     const { data: { user } } = await db.auth.getUser();
     if (!user) {
-        alert('Not logged in');
+        showNotification('message', 'error');
+//        alert('Not logged in');
         return;
     }
 
@@ -58,7 +61,8 @@ async function uploadPost() {
 
         if (uploadError) {
             console.error('Image upload failed:', uploadError);
-            alert('Image upload failed');
+            showNotification('message', 'error');
+//            alert('Image upload failed');
             return;
         }
 
@@ -118,7 +122,8 @@ async function uploadPost() {
 
             if (tagError) {
                 console.error('Tag insert failed:', tagError);
-                alert('Tag upload failed');
+                showNotification('message', 'error');
+//                alert('Tag upload failed');
                 return;
             }
 
@@ -141,7 +146,8 @@ async function uploadPost() {
 
     if (postError) {
         console.error('Post insert failed:', postError);
-        alert('Post upload failed');
+        showNotification('message', 'error');
+//        alert('Post upload failed');
         return;
     }
 
@@ -155,7 +161,8 @@ async function uploadPost() {
 
     if (mediaError) {
         console.error('Media insert failed:', mediaError);
-        alert('Media upload failed');
+        showNotification('message', 'error');
+//        alert('Media upload failed');
         return;
     }
 
@@ -175,7 +182,8 @@ async function uploadPost() {
 
         if (postTagError) {
             console.error('Post tags insert failed:', postTagError);
-            alert('Tag linking failed');
+            showNotification('message', 'error');
+//            alert('Tag linking failed');
             return;
         }
     }
@@ -183,10 +191,10 @@ async function uploadPost() {
     // -------------------------
     // 8. SUCCESS
     // -------------------------
-
-    alert('Post uploaded successfully');
+    hideLoader();
     showPage('main');
-    // optionally reload the feed here
+    clearAddForm();
+    loadFeed();
 }
 
 // -------------------------
@@ -225,4 +233,19 @@ function createThumbnail(file) {
 
         img.src = url;
     });
+}
+
+function clearAddForm() {
+    document.getElementById('postTitle').value = '';
+    document.getElementById('desc').value = '';
+    document.getElementById('tagCards').innerHTML = '';
+    document.getElementById('tagInput').value = '';
+    document.getElementById('uploadPreview').innerHTML = '';
+    document.getElementById('uploadStrip').innerHTML = '';
+    document.getElementById('uploadStrip').hidden = true;
+    document.getElementById('uploadLabel').style.display = 'flex';
+    document.getElementById('dropZone').style.width = '';
+    files = [];
+    addedTags = [];
+    resizeInput();
 }

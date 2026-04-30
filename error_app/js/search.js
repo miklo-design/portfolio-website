@@ -20,7 +20,7 @@ document.getElementById('searchInput').addEventListener('focus', showFilters);
 
 document.addEventListener('click', (e) => {
     const searchArea = document.getElementById('search');
-    if (!searchArea.contains(e.target)) {
+    if (!searchArea.contains(e.target) && !filterInteracting) {
         hideFilters();
     }
 });
@@ -29,8 +29,10 @@ document.addEventListener('click', (e) => {
 // TAG TOGGLE — called directly from onclick
 // -------------------------
 
+let filterInteracting = false;
+
 function toggleFilterTag(tagId) {
-    console.log('toggleFilterTag called:', tagId);
+    filterInteracting = true;
     if (activeTagIds.includes(tagId)) {
         activeTagIds = activeTagIds.filter(id => id !== tagId);
     } else {
@@ -38,8 +40,8 @@ function toggleFilterTag(tagId) {
     }
     renderFilterTags();
     runSearch();
+    setTimeout(() => { filterInteracting = false; }, 100);
 }
-
 // -------------------------
 // FILTER TAGS
 // -------------------------

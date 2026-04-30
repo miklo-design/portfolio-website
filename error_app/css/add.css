@@ -1,9 +1,9 @@
 .upload-elements {
     display: flex;
-    position: absolute;
+    position: relative;
     left: 16px;
     right: 16px;
-    margin-top: 72px;
+    margin-top: 16px;
     box-sizing: border-box;
 }
 /*-----MEDIA-----*/
@@ -13,7 +13,7 @@
     flex-shrink: 0;
 }
 .drop-zone {
-    background-color: #1f1f1f;
+    background-color: #323232;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,15 +28,15 @@
 } */
 .drop-zone:hover .upload-label {
     background-color: rgba(0, 0, 0, 0.3);
-    color: white;
+    color: #f0f0f0;
     box-shadow: inset 0 0 64px rgba(0, 0, 0, 0.8);
 }
 
 .upload-label {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans";
     font-size: 1.2rem;
     font-weight: 700;
-    color: #555;
+    color: #d2d2d2;
     position: absolute;
     z-index: 2;
     pointer-events: none;
@@ -61,7 +61,7 @@
 
 
 .upload-strip {
-    background-color: gray;
+    background-color: #505050;
     margin-top: 8px;
     padding-left: 8px;
     width: calc(100% - 8px);
@@ -83,7 +83,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    box-shadow: inset 0 0 72px rgba(0, 0, 0, 0.5);
+/*    box-shadow: inset 0 0 72px rgba(0, 0, 0, 0.5); */
     z-index: 1;
 }
 .upload-thumbnail {
@@ -100,22 +100,17 @@
     object-fit: cover;
 }
 .upload-thumbnail.selected {
-    outline: 2px solid #000000;
+    outline: 2px solid #f0f0f0;
 }
 .upload-thumbnail.dragging {
     opacity: 0.4;
     cursor: grabbing;
 }
-/*.upload-overlay {
-    background-color: red; 
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-}*/
+
 
 /*-----TEXT-----*/
 .text-inputs {
-    margin-left: 16px;
+    margin-right: 16px;
     flex: 1;
     min-width: 0;
     max-width: 640px;
@@ -123,8 +118,8 @@
 }
 .post-title {
     all: unset;
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
+    font-family: "Open Sans";
     font-weight: 800;
     font-size: 1rem;
     padding: 8px;
@@ -137,12 +132,13 @@
     all: unset;
     resize: none;
     display: block;
-    background-color: white;
+    background-color: #f0f0f0;
     padding: 8px;
     width: 100%;
     height: 12vw;
     margin-bottom: 8px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans";
+    font-weight: 600;
     font-size: 1rem;
     border-radius: 2px;
 }
@@ -150,26 +146,28 @@
 /*-----TAGS-----*/
 
 .post-tags {
-    background-color: white;
+    background-color: #f0f0f0;
     padding: 8px;
     width: 100%;
-    height: 8vw;
+    min-height: 56px;
     margin-bottom: 8px;
     border-radius: 2px;
 }
 .tag-input {
     all: unset;
-    background-color: lightgray;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #d2d2d2;
+    color: #1e1e1e;
+    font-family: "Open Sans";
+    font-weight: 600;
     padding: 2px 4px 2px 4px;
-    border-radius: 2px;
+    border-radius: 4px;
 }
 .tag-input-sizer {
     position: absolute;
     visibility: hidden;
     box-sizing: border-box;
     white-space: pre;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans";
     font-size: 1rem;
     padding: 2px 4px;
 }
@@ -178,18 +176,19 @@
     padding: 0;
     margin: 0;
     position: absolute;
-    background-color: #3f3f3f;
-    color: white;
+    background-color: #505050;
+    color: #f0f0f0;
     max-height: 160px;
     overflow-y: auto;
     z-index: 1;
     min-width: 3vw;
+    border-radius: 8px;
 }
 
 .suggestion-item {
     padding: 6px 12px;
     cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Open Sans";
     font-size: 1rem;
 }
 
@@ -200,14 +199,18 @@
 
 .tag-card {
     display: inline-flex;
+    justify-content: center;
     align-items: center;
-    background-color: lightgray;
-    padding: 2px 6px;
-    margin: 2px;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #d2d2d2;
+    color: #1e1e1e;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-family: "Open Sans";
     font-size: 1rem;
-    border-radius: 2px;
+    font-weight: 700;
+    border-radius: 8px;
+    width: fit-content;
+    padding: 4px 16px 4px 16px; 
 }
 
 .tag-card-delete {
@@ -227,14 +230,11 @@
 /*-----UPLOAD BUTTON-----*/
 
 .upload-button {
-    all: unset;
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 800;
-    padding: 8px;
-    cursor: pointer;
+    border: none;
+    outline: none;
 }
+/*
 .upload-button:hover {
-    background-color: #222;
-    color: white;
-}
+    background-color: #323232;
+    color: #f0f0f0;
+} */

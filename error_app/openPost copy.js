@@ -1,6 +1,5 @@
 let currentMedia = [];
 let currentMediaIndex = 0;
-let preloadedImages = {};
 
 function handlePostClick(e) {
     const card = e.target.closest('.post');
@@ -22,7 +21,6 @@ async function loadPost(postId) {
             id,
             title,
             description,
-            user_id,
             profiles (
                 username,
                 avatar_url
@@ -34,8 +32,7 @@ async function loadPost(postId) {
             ),
             post_tags (
                 tags (
-                    name,
-                    id
+                    name
                 )
             )
         `)
@@ -47,49 +44,31 @@ async function loadPost(postId) {
         return;
     }
 
+    // sort media by display order
     currentMedia = data.post_media.sort((a, b) => a.display_order - b.display_order);
     currentMediaIndex = 0;
-    preloadedImages = {};
 
+    // fill text content
     document.getElementById('viewTitle').textContent = data.title;
     document.getElementById('viewDesc').textContent = data.description;
 
-    // author — clickable
-    const authorEl = document.getElementById('viewAuthor');
-    authorEl.textContent = data.profiles.username;
-    authorEl.style.cursor = 'pointer';
-    authorEl.onclick = () => {
-        showPage('profile');
-        openProfile(data.user_id);
-    };
+    // display author
+    document.getElementById('viewAuthor').textContent = data.profiles.username;
 
-    // tags — clickable
+    // display tags
     const viewTags = document.getElementById('viewTags');
     viewTags.innerHTML = '';
     data.post_tags.forEach(pt => {
         const tag = document.createElement('div');
-        tag.classList.add('tag', 'card');
+        tag.classList.add('tag');
         tag.textContent = pt.tags.name;
-        tag.style.cursor = 'pointer';
-        tag.addEventListener('click', () => {
-            showPage('main');
-            // select this tag in search and run search
-            activeTagIds = [pt.tags.id];
-            currentQuery = '';
-            runSearch();
-        });
         viewTags.appendChild(tag);
     });
 
-    // preload all images
-    currentMedia.forEach(m => {
-        const img = new Image();
-        img.src = m.media_url;
-        preloadedImages[m.media_url] = img;
-    });
-
+    // display media
     showMedia(0);
     updateNavigation();
+
     initSaveButton(postId);
 }
 
@@ -113,9 +92,11 @@ function updateNavigation() {
     const total = currentMedia.length;
     const index = currentMediaIndex;
 
+    // update arrows
     document.getElementById('prevMedia').style.visibility = index > 0 ? 'visible' : 'hidden';
     document.getElementById('nextMedia').style.visibility = index < total - 1 ? 'visible' : 'hidden';
 
+    // update dots
     const dotsContainer = document.getElementById('mediaDots');
     dotsContainer.innerHTML = '';
 
@@ -139,28 +120,4 @@ document.getElementById('prevMedia').addEventListener('click', () => {
 
 document.getElementById('nextMedia').addEventListener('click', () => {
     if (currentMediaIndex < currentMedia.length - 1) showMedia(currentMediaIndex + 1);
-});
-
-// arrow key navigation
-document.addEventListener('keydown', (e) => {
-    const viewContainer = document.getElementById('viewContainer');
-    if (viewContainer.hidden) return;
-    if (e.key === 'ArrowLeft' && currentMediaIndex > 0) showMedia(currentMediaIndex - 1);
-    if (e.key === 'ArrowRight' && currentMediaIndex < currentMedia.length - 1) showMedia(currentMediaIndex + 1);
-});
-
-let touchStartX = 0;
-
-document.getElementById('viewMedia').addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-}, { passive: true });
-
-document.getElementById('viewMedia').addEventListener('touchend', (e) => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) < 50) return; // ignore small swipes
-    if (diff > 0 && currentMediaIndex < currentMedia.length - 1) {
-        showMedia(currentMediaIndex + 1);
-    } else if (diff < 0 && currentMediaIndex > 0) {
-        showMedia(currentMediaIndex - 1);
-    }
 });

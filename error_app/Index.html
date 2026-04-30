@@ -4,6 +4,11 @@
         <meta charset="UTF-8" />
         <title>Title</title>
         
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        
+        
         <link href="css/header.css" rel="stylesheet" type="text/css">
         <link href="css/feed.css" rel="stylesheet" type="text/css">
         <link href="css/add.css" rel="stylesheet" type="text/css"> 
@@ -11,19 +16,18 @@
         <link href="css/view.css" rel="stylesheet" type="text/css">
         <link href="css/mobile-view.css" rel="stylesheet" type="text/css">
         <link href="css/settings.css" rel="stylesheet" type="text/css"> 
-        
+        <link href="css/notif.css" rel="stylesheet" type="text/css">
+        <link href="css/buttons.css" rel="stylesheet" type="text/css">
+       
         
         <style>
             body{
-                background-color: black;
+                background-color: #151515;
                 display: flex;
                 min-height: 100vh;
                 margin: 0;
             }
             .close {
-                all: unset;
-                background-color: white;
-                cursor: pointer;
                 display: block;
                 margin-left: auto;
                 position: relative;
@@ -37,9 +41,10 @@
 <!--    MENU   -->        
 
         <div class="menu-cont" id="menuCont">
-            <div class="user-account" id="userAccount"></div>            
+            <div class="user-account" id="userAccount"></div>    
+            <div class="menu-spacer"></div>
             <button class="menu-btn profile-btn" id="profileBtn">Profile</button>
-            <button class="menu-btn" id="addPost">CREATE</button>
+            <button class="menu-btn" id="addPost">Create +</button>
             <button class="menu-btn settings-btn" id="settingsBtn">Settings</button>
             <button class="menu-btn logout-btn" id="logoutBtn">Log Out</button>
         </div>        
@@ -50,39 +55,29 @@
 
             <div class="header" id="header">
 
-                <div class="logoPlaceholder"></div>
+                <div class="header-elements">
+                    <div class="logo" id="logo"></div>
 
-            <!--    
+                    <div class="search-area" id="search">
 
-                <div class="acc-cont" id="accCont">
-                    <button class="user-account" id="userAccount"></button>
-                    <div class="acc-dropdown" id="accDropdown">
-                        <button class="acc-btn profile-btn" id="profileBtn">Profile</button>
-                        <button class="acc-btn settings-btn" id="settingsBtn">Settings</button>
-                        <button class="acc-btn logout-btn" id="logoutBtn">Log Out</button>
-                    </div>
-                </div>            
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search..." class="search-input" id="searchInput">
+                            <button class="placeholder" tabindex="-1" id="searchBtn"></button>
+                        </div>
 
-                <button class="add-post" id="addPost">CREATE</button>   -->
+                        <div class="search-filters" id="searchFilters">
+                            <div class="filter-label">FILTER by TAGS</div>
+                            <div class="filter-tags" id="filterTags"></div>
 
-                <div class="search-area" id="search">
-
-                    <div class="search-bar">
-                        <input type="text" placeholder="Search..." class="search-input" id="searchInput">
-                        <button class="placeholder" tabindex="-1" id="searchBtn"></button>
-                    </div>
-
-                    <div class="search-filters" id="searchFilters">
-                        <div class="filter-label">FILTER</div>
-                        <div class="filter-tags" id="filterTags"></div>
+                        </div>
 
                     </div>
-
                 </div>
 
             </div>
 
 
+        <div class="page-content">    
     <!--    MAIN FEED   -->        
 
 
@@ -93,7 +88,7 @@
 
             <div class="profile-container" id="profile" hidden>
 
-            <button class="close" id="closeProfile">BACK</button>
+            <button class="close btn" id="closeProfile">← BACK</button>
 
             <div class="profile-elements">
                 <div class="user-cont"> 
@@ -131,10 +126,25 @@
 
             <div class="add-container" id="addContainer" hidden>
 
-            <button class="close" id="closeAdd">BACK</button>
+            <button class="close btn" id="closeAdd">← BACK</button>
 
 
-            <div class="upload-elements">       
+            <div class="upload-elements">    
+                
+                <div class="text-inputs"> 
+                    <input type="text" class="post-title" placeholder="TITLE" id="postTitle">
+                    <textarea class="post-desc" id="desc" placeholder="Description"></textarea>
+
+                    <div class="post-tags" id="postTags">
+                        <div class="tag-cards" id="tagCards"></div>
+                        <input type="text" class="tag-input" id="tagInput" placeholder="Add Tag...">
+                        <span class="tag-input-sizer"></span>
+                        <ul class="suggestions"></ul>
+                    </div>
+
+                    <button class="upload-button btn" id="uploadButton">UPLOAD</button>
+                </div>
+                
                 <div class="media" id="media">
                     <input type="file" class="media-upload" id="mediaUpload" multiple accept="image/*" hidden>
 
@@ -150,91 +160,89 @@
 
 
 
-                <div class="text-inputs"> 
-                    <input type="text" class="post-title" placeholder="TITLE" id="postTitle">
-                    <textarea class="post-desc" id="desc" placeholder="Description"></textarea>
 
-                    <div class="post-tags" id="postTags">
-                        <div class="tag-cards" id="tagCards"></div>
-                        <input type="text" class="tag-input" id="tagInput" placeholder="Add Tag...">
-                        <span class="tag-input-sizer"></span>
-                        <ul class="suggestions"></ul>
-                    </div>
-
-                    <button class="upload-button" id="uploadButton">UPLOAD</button>
-                </div>
             </div>        
         </div>
 
     <!--    VIEW POST   -->        
 
             <div class="view-container" id="viewContainer" hidden>
+            
+                <button class="save" id="save">SAVE</button>
+                <button class="close btn" id="closeView">← BACK</button>
 
-            <button class="close" id="closeView">BACK</button>
+                <div class="view-elements">
 
-            <div class="view-elements">
-
-                <div class="media-elements">
-                    <div class="view-media-container">
-                        <button class="media-arrow" id="prevMedia">&#8592;</button>
-                        <div class="view-media" id="viewMedia"></div>
-                        <button class="media-arrow" id="nextMedia">&#8594;</button>
+                    <div class="view-text" id="viewText">            
+                        <div class="view-title" id="viewTitle"></div>
+                        <div class="view-desc" id="viewDesc"></div>
+                        <div class="view-tags" id="viewTags"></div>
+                        <div class="view-author" id="viewAuthor"></div>
                     </div>
 
-                    <div class="media-dots" id="mediaDots"></div>
+
+
+                    <div class="media-elements">
+                        <div class="view-media-container">
+                            <button class="media-arrow" id="prevMedia">&#8592;</button>
+                            <div class="view-media" id="viewMedia"></div>
+                            <button class="media-arrow" id="nextMedia">&#8594;</button>
+                        </div>
+
+                        <div class="media-dots" id="mediaDots"></div>
+                    </div>
+
+
                 </div>
+            
+            </div>      
 
-                <div class="view-text" id="viewText">            
-                    <div class="view-title" id="viewTitle"></div>
-                    <div class="view-desc" id="viewDesc"></div>
-                    <div class="view-tags" id="viewTags"></div>
-                    <div class="view-author" id="viewAuthor"></div>
-                </div>
-
-                <button class="save" id="save">SAVE</button>
-            </div>
-
-        </div>
+           
 
     <!--    SETTINGS   -->
 
             <div class="settings-container" id="settingsContainer" hidden>
             
-            <button class="close" id="closeSettings">BACK</button>
+            <button class="close btn" id="closeSettings"> ← BACK</button>
 
             <div class="settings-elements">
                 
                 <div class="email-change" id="emailChange">
+                    <div class="settings-title">Change Email</div>
                     <div class="change-label">Your new email address:</div>
                     <input class="change-input-e" id="newEmail" type="text" placeholder="example@example.com">
-                    <button class="change-btn" id="emailChBtn">Change Email</button>
+                    <button class="change-btn btn" id="emailChBtn">Change Email</button>
                 </div>
                 
                 <div class="pw-change" id="pwChange">
+                    <div class="settings-title">Change Password</div>
                     <div class="change-label">Your current password:</div>
-                    <input class="change-input-p" id="oldPw" type="password" placeholder="Old Password">
+                    <input class="change-input-p" id="oldPw" type="password" placeholder="Current Password">
                     <div class="change-label">Your new password:</div>
                     <input class="change-input-p" id="newPw" type="password" placeholder="New Password">
                     <div class="change-label">Your new password again:</div>
                     <input class="change-input-p" id="newPw2" type="password" placeholder="New Password Again">
-                    <button class="change-btn" id="pwChBtn">Change Password</button>
+                    <button class="change-btn btn" id="pwChBtn">Change Password</button>
                 </div>
                 
                 <div class="delete-cont" id="deleteCont">
-                    <button class="change-btn del-btn" id="deleteAcc">Delete Account</button>
+                    <div class="settings-title">Delete Account</div>
+                    <button class="change-btn btn del-btn" id="deleteAcc">Delete Account</button>
                     <div class="delete-conf" id="delete-conf" hidden>
                         <div class="conf-label">Are you sure you want to permanently delete your account?</div>
                         <div class="del-btns">
-                            <button class="change-btn del-btn" id="delFinal">Delete Account</button>
-                            <button class="change-btn" id="delCancel">Cancel</button>
+                            <button class="change-btn btn del-btn" id="delFinal">Delete Account</button>
+                            <button class="change-btn btn" id="delCancel">Cancel</button>
                         </div>
                     </div>
                 </div>
                 
             </div>
         </div>
-
-        </div>
+        
+        </div>     <!--    end page-content   -->
+      
+        </div> <!--    end page-wrap   -->
         
 <!--    TAB SWITCH   -->
 
@@ -269,19 +277,33 @@
             document.getElementById('closeView').addEventListener('click', () => showPage('main'));
             document.getElementById('closeSettings').addEventListener('click', () => showPage('main'));
             
-            document.getElementById('showPosts').addEventListener('click', () => showTab('userPosts'));
+            document.getElementById('showPosts').addEventListener('click', async () => {
+                showTab('userPosts');
+                await loadUserPosts(currentProfileId);
+            });
             document.getElementById('showSaved').addEventListener('click', async () => {
                 showTab('userSaved');
-                if (document.getElementById('userSaved').innerHTML === '') {
-                    await loadSavedPosts(currentProfileId);
-                }
+                await loadSavedPosts(currentProfileId);
             });
-    
+
             function showTab(tabId) {
                 document.getElementById('userPosts').hidden = true;
                 document.getElementById('userSaved').hidden = true;
                 document.getElementById(tabId).hidden = false;
+                
+                document.getElementById('showPosts').classList.remove('selected');
+                document.getElementById('showSaved').classList.remove('selected');
+            
+                if (tabId === 'userPosts') {
+                    document.getElementById('showPosts').classList.add('selected');
+                } else if (tabId === 'userSaved') {
+                    document.getElementById('showSaved').classList.add('selected');
+                }
             }   
+             document.getElementById('logo').addEventListener('click', async () => {
+                location.reload()
+            });
+          
             
         </script>
         
@@ -289,6 +311,7 @@
     
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="js/database.js"></script>
+        <script src="js/notif.js"></script>
         <script src="js/auth.js"></script>
         <script src="js/settings.js"></script>
         <script src="js/profile.js"></script>
@@ -304,6 +327,8 @@
         <script src="js/savePost.js"></script>
     
     
-
+    <!--    <div class="loader" id="loader" hidden>
+            <div class="loader-inner"></div>
+        </div> -->
     </body>
 </html>
