@@ -28,3 +28,45 @@
 .notification-hide {
     opacity: 0;
 }
+
+.field-error {
+    color: red;
+    font-family: "Open Sans";
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.toast {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    font-family: "Open Sans";
+    font-size: 0.9rem;
+    font-weight: 600;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    border-radius: 4px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.toast-error {
+    background-color: #cc0000;
+    color: white;
+}
+
+.toast-success {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid white;
+}
+
+.toast-hide {
+    opacity: 0;
+}
+.input-error {
+    outline: 2px solid red !important;
+}

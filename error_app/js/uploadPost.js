@@ -1,3 +1,6 @@
+['postTitle'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => clearHighlight(id));
+});
 const uploadBtn = document.getElementById('uploadButton');
 
 uploadBtn.addEventListener('click', async () => {
@@ -5,7 +8,7 @@ uploadBtn.addEventListener('click', async () => {
 });
 
 async function uploadPost() {
-    showLoader();
+    
     // -------------------------
     // 1. GRAB ALL INPUT DATA
     // -------------------------
@@ -14,21 +17,22 @@ async function uploadPost() {
     const description = document.getElementById('desc').value.trim();
 
     if (!title) {
-        showNotification('message', 'error');
+        highlightField('postTitle');
+        showToast('Please add a title!');
 //        alert('Please add a title');
         return;
     }
 
     if (files.length === 0) {
-        showNotification('message', 'error');
+        showToast('Please add at least one image!', true);
 //        alert('Please add at least one image');
         return;
     }
 
-    // get logged in user
+    // get logged in user not sure if we still need this
     const { data: { user } } = await db.auth.getUser();
     if (!user) {
-        showNotification('message', 'error');
+        showToast('Not logged in');
 //        alert('Not logged in');
         return;
     }
@@ -61,7 +65,7 @@ async function uploadPost() {
 
         if (uploadError) {
             console.error('Image upload failed:', uploadError);
-            showNotification('message', 'error');
+            showToast('Image uplaod failed.', true);
 //            alert('Image upload failed');
             return;
         }
@@ -122,7 +126,6 @@ async function uploadPost() {
 
             if (tagError) {
                 console.error('Tag insert failed:', tagError);
-                showNotification('message', 'error');
 //                alert('Tag upload failed');
                 return;
             }
@@ -146,7 +149,7 @@ async function uploadPost() {
 
     if (postError) {
         console.error('Post insert failed:', postError);
-        showNotification('message', 'error');
+        showToast('Failed to upload post.', true);
 //        alert('Post upload failed');
         return;
     }
@@ -161,7 +164,6 @@ async function uploadPost() {
 
     if (mediaError) {
         console.error('Media insert failed:', mediaError);
-        showNotification('message', 'error');
 //        alert('Media upload failed');
         return;
     }
@@ -182,7 +184,6 @@ async function uploadPost() {
 
         if (postTagError) {
             console.error('Post tags insert failed:', postTagError);
-            showNotification('message', 'error');
 //            alert('Tag linking failed');
             return;
         }
@@ -191,7 +192,7 @@ async function uploadPost() {
     // -------------------------
     // 8. SUCCESS
     // -------------------------
-    hideLoader();
+    
     showPage('main');
     clearAddForm();
     loadFeed();

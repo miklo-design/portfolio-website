@@ -1,3 +1,7 @@
+['newEmail', 'oldPw', 'newPw', 'newPw2'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => clearHighlight(id));
+});
+
 // -------------------------
 // EMAIL CHANGE
 // -------------------------
@@ -6,22 +10,20 @@ document.getElementById('emailChBtn').addEventListener('click', async () => {
     const newEmail = document.getElementById('newEmail').value.trim();
 
     if (!newEmail) {
-        showNotification('message', 'error');
-//        alert('Please enter a new email address');
+        highlightField('newEmail');
+        showToast('Please enter a new email address.');
         return;
     }
 
     const { error } = await db.auth.updateUser({ email: newEmail });
 
     if (error) {
-        showNotification('message', 'error');
-//        alert('Email change failed: ' + error.message);
+        showToast('Email change failed.', true);
         return;
     }
-    showNotification('message', 'success');
-//    alert('Confirmation sent to your new email address. Click the link to confirm the change.');
+
+    showToast('Confirmation sent to your new email address. Click the link to confirm the change.', true, 'success');
     document.getElementById('newEmail').value = '';
-    document.getElementById('oldEmail').value = '';
 });
 
 // -------------------------
@@ -34,24 +36,26 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
     const newPw2 = document.getElementById('newPw2').value;
 
     if (!oldPw || !newPw || !newPw2) {
-        showNotification('message', 'error');
-//        alert('Please fill in all password fields');
+        if (!oldPw) highlightField('oldPw');
+        if (!newPw) highlightField('newPw');
+        if (!newPw2) highlightField('newPw2');
+        showToast('Please fill in all fields.');
         return;
     }
 
     if (newPw !== newPw2) {
-        showNotification('message', 'error');
-//        alert('New passwords do not match');
+        highlightField('newPw');
+        highlightField('newPw2');
+        showToast('New passwords do not match.');
         return;
     }
 
     if (newPw.length < 6) {
-        showNotification('message', 'error');
-//        alert('Password must be at least 6 characters');
+        highlightField('newPw');
+        showToast('Password must be at least 6 characters.');
         return;
     }
 
-    // re-authenticate with old password first
     const { data: { user } } = await db.auth.getUser();
 
     const { error: signInError } = await db.auth.signInWithPassword({
@@ -60,20 +64,19 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
     });
 
     if (signInError) {
-        showNotification('message', 'error');
-//        alert('Current password is incorrect');
+        highlightField('oldPw');
+        showToast('Current password is incorrect.');
         return;
     }
 
     const { error } = await db.auth.updateUser({ password: newPw });
 
     if (error) {
-        showNotification('message', 'error');
-//        alert('Password change failed: ' + error.message);
+        showToast('Password change failed.', true);
         return;
     }
-    showNotification('message', 'success');
-//    alert('Password changed successfully');
+
+    showToast('Password changed successfully.', true, 'success');
     document.getElementById('oldPw').value = '';
     document.getElementById('newPw').value = '';
     document.getElementById('newPw2').value = '';
@@ -102,16 +105,10 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     });
 
     if (error) {
-        showNotification('message', 'error');
-//        alert('Account deletion failed: ' + error.message);
+        showToast('Account deletion failed.', true);
         return;
     }
 
-    await db.auth.signOut();
-    window.location.href = 'Index2.html';
-});
-
-    // sign out and redirect
     await db.auth.signOut();
     window.location.href = 'Index2.html';
 });

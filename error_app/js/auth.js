@@ -1,4 +1,22 @@
+async function handleEmailConfirmation() {
+    const hash = window.location.hash;
+    if (!hash) return;
 
+    const params = new URLSearchParams(hash.substring(1));
+    const type = params.get('type');
+
+    if (type === 'email_change') {
+        const { error } = await db.auth.refreshSession();
+        if (!error) {
+            showToast('Email updated successfully.', true, 'success');
+            // clean the hash from the URL without reloading
+            history.replaceState(null, '', window.location.pathname);
+        }
+    }
+}
+
+handleEmailConfirmation();
+initAuth();
 
 async function initAuth() {
     const { data: { user }, error } = await db.auth.getUser();

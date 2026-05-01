@@ -99,8 +99,7 @@ function editUsername() {
             .maybeSingle();
 
         if (existing) {
-            showNotification('message', 'error');
-            //alert('Username already taken');
+            showToast('Username already taken', true);
             restoreUsername(current);
             return;
         }
@@ -111,8 +110,7 @@ function editUsername() {
             .eq('id', loggedInUserId);
 
         if (error) {
-            showNotification('message', 'error');
-//            alert('Update failed');
+            showToast('Update failed', true);
             restoreUsername(current);
             return;
         }
@@ -178,8 +176,7 @@ function editBio() {
             .eq('id', loggedInUserId);
 
         if (error) {
-            showNotification('message', 'error');
-//            alert('Update failed');
+            showToast('Update failed', true);
             restoreBio(current);
         }
     }
@@ -240,7 +237,7 @@ console.log('upload error:', uploadError);
 console.log('uploading to path:', path);
 console.log('logged in user id:', loggedInUserId);
         if (uploadError) {
-            showNotification('message', 'error');
+            showToast('Upload failed', true);
 //            alert('Avatar upload failed');
             return;
         }
@@ -255,7 +252,7 @@ console.log('logged in user id:', loggedInUserId);
             .eq('id', loggedInUserId);
 
         if (updateError) {
-            showNotification('message', 'error');
+            showToast('Profile update failed', true);
 //            alert('Profile update failed');
             return;
         }
