@@ -201,22 +201,25 @@
 
             <div class="view-container" id="viewContainer" hidden>
             
-                
+                <button class="save" id="save">SAVE</button>
                 <button class="close btn" id="closeView">← BACK</button>
 
                 <div class="view-elements">
                     
                     <div class="media-elements">
-                        <div class="media-carousel" id="mediaCarousel"></div>
+                        <div class="view-media-container">
+                            <button class="media-arrow" id="prevMedia">&#8592;</button>
+                            <div class="view-media" id="viewMedia"></div>
+                            <button class="media-arrow" id="nextMedia">&#8594;</button>
+                        </div>
+
+                        <div class="media-dots" id="mediaDots"></div>
                     </div>
 
                     <div class="view-text" id="viewText">            
-                        <div class="a">
-                            <div class="view-title" id="viewTitle"></div>
-                            <button class="save" id="save">SAVE</button>
-                        </div>
-                        <div class="view-tags" id="viewTags"></div>
+                        <div class="view-title" id="viewTitle"></div>
                         <div class="view-desc" id="viewDesc"></div>
+                        <div class="view-tags" id="viewTags"></div>
                         <div class="view-author" id="viewAuthor"></div>
                     </div>
 

@@ -5,9 +5,8 @@
     position: fixed;
 /*    width: calc(85vw - 32px);*/
     top: 0;
-    left: 15vw;
     right: 0;
-    z-index: 10;
+    z-index: 9;
     height: var(--header-height);
     margin: 8px 8px 0 8px;
 }
@@ -19,10 +18,12 @@
 
 }
 .logo {
-    width: 120px;
+    width: 40px;
     height: 40px;
     background-color: red;
     cursor: pointer;
+    margin-left: 16px;
+    margin-bottom: 8px;
 }
 /*      SEARCH      */       
 
@@ -103,7 +104,7 @@
     height: 24px;
     display: inline-block;
     cursor: pointer;
-}
+} 
 
 .search-bar{
     display: flex;
@@ -149,7 +150,12 @@
     font-family: "Open Sans";
     font-size: 1rem;
     font-weight: 600;
-} 
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.menu-cont:hover .user-account {
+    opacity: 1;
+}
 .menu-btn {
     all: unset;
     font-family: "Open Sans";
@@ -157,15 +163,21 @@
     font-size: 1.2rem;
     color: #f0f0f0;
     cursor: pointer;
-    margin: 0 16px 16px 16px;
+    margin: 16px 16px 16px 20px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
 }
 .menu-btn:hover {
     color: #505050;
 }
+.menu-btn:hover .icon-svg {
+    fill: gray;
+}
+
 .menu-cont {
-    width: 15vw;
+    width: 72px;
     min-height: 100vh;
-    min-width: 150px;
     background-color: #1e1e1e;
     flex-shrink: 0;
     position: fixed;
@@ -174,27 +186,66 @@
     flex-direction: column;
     padding: 16px 0;
     margin-right: 8px;
+    z-index: 10;
+    overflow: hidden;
+    transition: 0.2s ease;
 }
+.menu-cont:hover {
+    width: 15vw;
+    min-width: 200px;
+    transition: 0.2s ease;
+} 
+
+.menu-label {
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.menu-cont:hover .menu-label {
+    opacity: 1;
+}
+
+
 .page-wrap {
     flex: 1;
-    margin-left: 15vw;
-    width: 85vw;
+    margin-left: 72px;
+    width: calc(100vw - 72px);
+    padding: 16px;
     min-width: 0;
     
 }
 .page-content {
-    padding-top: calc(var(--header-height) + 8px);
-    padding-right: 16px;
+  /*  padding-top: calc(var(--header-height) + 8px); */
+    padding-top: 16px;
+  /*  padding-right: 16px; */
 }
 .menu-spacer {
     height: 2px;
     width: 14vw;
     background-color: #f0f0f0;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     margin-left: 0.5vw;
 }
 .logout-btn {
     color: red;
     margin-top: auto;
     margin-bottom: 32px;
+}
+.menu-icon {
+    height: 32px;
+    width: 32px;
+    margin-right: 16px;
+}
+.menu-icon .img {
+    object-fit: contain;
+}
+.icon-svg {
+    fill: white;
+    width: 32px;
+    height: 32px;
+}
+.icon-svg2 {
+    fill: red ;
+    width: 32px;
+    height: 32px;
 }

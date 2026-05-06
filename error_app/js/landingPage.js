@@ -119,5 +119,5 @@ document.querySelector('.signup').addEventListener('click', async () => {
     }
 
     document.getElementById('signupContainer').hidden = true;
-    document.getElementById('confirmContainer').hidden = false;
+    document.getElementById('confCont').hidden = false;
 });

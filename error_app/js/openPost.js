@@ -81,86 +81,18 @@ async function loadPost(postId) {
         viewTags.appendChild(tag);
     });
 
-    // preload all images
+    const carousel = document.getElementById('mediaCarousel');
+    carousel.innerHTML = '';
+
     currentMedia.forEach(m => {
-        const img = new Image();
+        const img = document.createElement('img');
         img.src = m.media_url;
-        preloadedImages[m.media_url] = img;
+        carousel.appendChild(img);
     });
 
-    showMedia(0);
-    updateNavigation();
+    
     initSaveButton(postId);
+    
+
 }
 
-function showMedia(index) {
-    currentMediaIndex = index;
-    const media = currentMedia[index];
-
-    const viewMedia = document.getElementById('viewMedia');
-    viewMedia.innerHTML = '';
-    viewMedia.style.width = '';
-    viewMedia.style.height = '';
-
-    const img = document.createElement('img');
-    img.src = media.media_url;
-    viewMedia.appendChild(img);
-
-    updateNavigation();
-}
-
-function updateNavigation() {
-    const total = currentMedia.length;
-    const index = currentMediaIndex;
-
-    document.getElementById('prevMedia').style.visibility = index > 0 ? 'visible' : 'hidden';
-    document.getElementById('nextMedia').style.visibility = index < total - 1 ? 'visible' : 'hidden';
-
-    const dotsContainer = document.getElementById('mediaDots');
-    dotsContainer.innerHTML = '';
-
-    if (total > 1) {
-        dotsContainer.style.display = 'flex';
-        currentMedia.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('media-dot');
-            if (i === index) dot.classList.add('media-dot-active');
-            dot.addEventListener('click', () => showMedia(i));
-            dotsContainer.appendChild(dot);
-        });
-    } else {
-        dotsContainer.style.display = 'none';
-    }
-}
-
-document.getElementById('prevMedia').addEventListener('click', () => {
-    if (currentMediaIndex > 0) showMedia(currentMediaIndex - 1);
-});
-
-document.getElementById('nextMedia').addEventListener('click', () => {
-    if (currentMediaIndex < currentMedia.length - 1) showMedia(currentMediaIndex + 1);
-});
-
-// arrow key navigation
-document.addEventListener('keydown', (e) => {
-    const viewContainer = document.getElementById('viewContainer');
-    if (viewContainer.hidden) return;
-    if (e.key === 'ArrowLeft' && currentMediaIndex > 0) showMedia(currentMediaIndex - 1);
-    if (e.key === 'ArrowRight' && currentMediaIndex < currentMedia.length - 1) showMedia(currentMediaIndex + 1);
-});
-
-let touchStartX = 0;
-
-document.getElementById('viewMedia').addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-}, { passive: true });
-
-document.getElementById('viewMedia').addEventListener('touchend', (e) => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) < 50) return; // ignore small swipes
-    if (diff > 0 && currentMediaIndex < currentMedia.length - 1) {
-        showMedia(currentMediaIndex + 1);
-    } else if (diff < 0 && currentMediaIndex > 0) {
-        showMedia(currentMediaIndex - 1);
-    }
-});
