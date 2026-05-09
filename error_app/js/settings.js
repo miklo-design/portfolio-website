@@ -117,18 +117,41 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     const { data: { session } } = await db.auth.getSession();
     if (!session) return;
 
-    const response = await fetch('https://wpnuxfkujhyaxmsvsrml.supabase.co/functions/v1/delete-user', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${session.access_token}`,
-            'apikey': 'sb_publishable_cE1puSB1pidyY4kDW3PxcQ_Y21JGC_r'
-        },
-        body: JSON.stringify({ userId: session.user.id })
-    });
+    const userId = session.user.id;
 
-    if (!response.ok) {
+    // delete avatar from storage
+    await db.storage.from('avatars').remove([`${userId}.jpg`]);
+
+    // delete post media from storage
+    const { data: posts } = await db
+        .from('posts')
+        .select('id')
+        .eq('user_id', userId);
+
+    if (posts && posts.length > 0) {
+        const { data: mediaFiles } = await db
+            .from('post_media')
+            .select('media_url, thumbnail_url')
+            .in('post_id', posts.map(p => p.id));
+
+        if (mediaFiles) {
+            const paths = mediaFiles
+                .flatMap(m => [m.media_url, m.thumbnail_url].filter(Boolean))
+                .map(url => url.split('/post-media/')[1])
+                .filter(Boolean);
+
+            if (paths.length > 0) {
+                await db.storage.from('post-media').remove(paths);
+            }
+        }
+    }
+
+    // call the SQL function to delete auth user
+    const { error } = await db.rpc('delete_user_account');
+
+    if (error) {
         showToast('Account deletion failed.', true);
+        console.error(error);
         return;
     }
 
