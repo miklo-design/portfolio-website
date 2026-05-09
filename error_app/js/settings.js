@@ -120,13 +120,16 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     const userId = session.user.id;
 
     // delete avatar from storage
+    console.log('deleting avatar...');
     await db.storage.from('avatars').remove([`${userId}.jpg`]);
 
     // delete post media from storage
+    console.log('fetching posts...');
     const { data: posts } = await db
         .from('posts')
         .select('id')
         .eq('user_id', userId);
+    console.log('posts found:', posts);
 
     if (posts && posts.length > 0) {
         const { data: mediaFiles } = await db
