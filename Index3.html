@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        
+        <link href="css/confirmation.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <body>
+        <div class="conf-done-wrapper">
+            <div class="done-title">Email Confirmed</div>
+            <div class="done-text">Thank you for signing up! Now you can log into your account.</div>
+            <button class="to-login" id="toLogin">Click here to log in!</button>
+        </div>
+        
+        <script>
+            document.getElementById('toLogin').addEventListener('click', () => {
+                window.location.href = 'Index2.html?tab=signin';
+            });
+        </script>
+    </body>
+</html>
