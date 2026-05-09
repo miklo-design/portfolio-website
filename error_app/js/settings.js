@@ -135,10 +135,13 @@ document.getElementById('delFinal').addEventListener('click', async () => {
             .in('post_id', posts.map(p => p.id));
 
         if (mediaFiles) {
+            console.log('full media files:', mediaFiles);
             const paths = mediaFiles
                 .flatMap(m => [m.media_url, m.thumbnail_url].filter(Boolean))
                 .map(url => url.split('/post-media/')[1])
                 .filter(Boolean);
+
+            console.log('paths:', paths);
 
             if (paths.length > 0) {
                 await db.storage.from('post-media').remove(paths);
