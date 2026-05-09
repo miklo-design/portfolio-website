@@ -123,6 +123,9 @@ button {
     font-size: 1rem;
     display: inline;
 }
+.forgot {
+    margin-bottom: 8px;
+}
 /*      Confirmation        */
 .conf-title {
     color: #f0f0f0;
