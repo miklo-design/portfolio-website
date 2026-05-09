@@ -42,10 +42,10 @@ async function initAuth() {
         .select('username, avatar_url')
         .eq('id', user.id)
         .single();
-
+/*
     if (profile) {
         document.getElementById('userAccount').textContent = profile.username;
-    }
+    } */
 }
 
 initAuth(); 

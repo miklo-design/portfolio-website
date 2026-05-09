@@ -95,7 +95,7 @@ document.getElementById('delCancel').addEventListener('click', () => {
     document.getElementById('delete-conf').hidden = true;
     document.getElementById('deleteAcc').hidden = false;
 });
-
+/*
 document.getElementById('delFinal').addEventListener('click', async () => {
     const { data: { user } } = await db.auth.getUser();
     if (!user) return;
@@ -105,6 +105,29 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     });
 
     if (error) {
+        showToast('Account deletion failed.', true);
+        return;
+    }
+
+    await db.auth.signOut();
+    window.location.href = 'Index2.html';
+}); */
+
+document.getElementById('delFinal').addEventListener('click', async () => {
+    const { data: { session } } = await db.auth.getSession();
+    if (!session) return;
+
+    const response = await fetch('https://wpnuxfkujhyaxmsvsrml.supabase.co/functions/v1/delete-user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`,
+            'apikey': 'sb_publishable_cE1puSB1pidyY4kDW3PxcQ_Y21JGC_r'
+        },
+        body: JSON.stringify({ userId: session.user.id })
+    });
+
+    if (!response.ok) {
         showToast('Account deletion failed.', true);
         return;
     }
