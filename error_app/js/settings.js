@@ -122,6 +122,8 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     // delete avatar from storage
     console.log('deleting avatar...');
     await db.storage.from('avatars').remove([`${userId}.jpg`]);
+    const { error: avatarError } = await db.storage.from('avatars').remove([`${userId}.jpg`]);
+    console.log('avatar delete error:', avatarError);
 
     // delete post media from storage
     console.log('fetching posts...');
@@ -142,9 +144,12 @@ document.getElementById('delFinal').addEventListener('click', async () => {
                 .flatMap(m => [m.media_url, m.thumbnail_url].filter(Boolean))
                 .map(url => url.split('/post-media/')[1])
                 .filter(Boolean);
+                console.log('media paths to delete:', paths);
 
             if (paths.length > 0) {
                 await db.storage.from('post-media').remove(paths);
+                const { error: storageError } = await db.storage.from('post-media').remove(paths);
+                console.log('storage delete error:', storageError);
             }
         }
     }
