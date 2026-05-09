@@ -159,5 +159,6 @@ document.getElementById('delFinal').addEventListener('click', async () => {
     }
 
     await db.auth.signOut();
+    await new Promise(resolve => setTimeout(resolve, 10000));
     window.location.href = 'Index2.html';
 });
