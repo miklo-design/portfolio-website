@@ -148,7 +148,8 @@ document.getElementById('delFinal').addEventListener('click', async () => {
 
             if (paths.length > 0) {
                 await db.storage.from('post-media').remove(paths);
-                const { error: storageError } = await db.storage.from('post-media').remove(paths);
+                const { data: removeData, error: storageError } = await db.storage.from('post-media').remove(paths);
+                console.log('storage delete result:', removeData);
                 console.log('storage delete error:', storageError);
             }
         }
