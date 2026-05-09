@@ -1,5 +1,6 @@
 // handle the recovery token from the email link
 async function handleRecoveryToken() {
+    console.log('full hash:', window.location.hash);
     const hash = window.location.hash;
     if (!hash) return;
 
@@ -50,7 +51,8 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
         showToast('Password must be at least 6 characters.');
         return;
     }
-
+    const { data: { user } } = await db.auth.getUser();
+    console.log('current user before update:', user);
     const { error } = await db.auth.updateUser({ password: newPw });
 
     if (error) {
