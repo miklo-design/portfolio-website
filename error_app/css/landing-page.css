@@ -16,6 +16,7 @@ input:not([type="checkbox"]) {
     border-radius: 8px;
     margin-bottom: 16px;
 }
+/*
 button {
     all: unset;
     background-color: #f3f3f3;
@@ -26,7 +27,7 @@ button {
     padding: 8px 16px 8px 16px;
     border-radius: 8px;
     cursor: pointer;
-}
+} */
 
 /*-----SIGN UP-----*/
 .signup-elements {
@@ -121,4 +122,19 @@ button {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     display: inline;
+}
+/*      Confirmation        */
+.conf-title {
+    color: #f0f0f0;
+    font-family: "Open Sans";
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+.conf-text {
+    color: #f0f0f0;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: 600;
+     margin-bottom: 32px;
 }
