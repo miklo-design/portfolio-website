@@ -1,8 +1,13 @@
-// -------------------------
-// CLEAR ERRORS ON INPUT
-// put one of these for each field that can show an error
-// clearFieldError takes the element ID as argument
-// -------------------------
+function handleTabParam() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'signin') {
+        document.getElementById('signupContainer').hidden = true;
+        document.getElementById('signinContainer').hidden = false;
+    }
+}
+
+handleTabParam();
+
 ['signupUn', 'signupPw', 'signupPw2', 'signupEmail'].forEach(id => {
     document.getElementById(id).addEventListener('input', () => clearHighlight(id));
 });
@@ -16,7 +21,7 @@ document.querySelector('.signin-container input[placeholder="Password"]')
         document.querySelector('.signin-container input[placeholder="Password"]').classList.remove('input-error');
         hideToast();
     });
-// enter key triggers signin
+
 document.querySelector('.signin-container').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') document.querySelector('.signin').click();
 });
@@ -30,7 +35,6 @@ document.querySelector('.signin').addEventListener('click', async () => {
     const password = document.querySelector('.signin-container input[placeholder="Password"]').value.trim();
 
     if (!identifier || !password) {
-        // highlight by class since no ids
         document.querySelector('.signin-container input[placeholder="E-mail address"]').classList.add('input-error');
         document.querySelector('.signin-container input[placeholder="Password"]').classList.add('input-error');
         showToast('All fields must be filled.');
@@ -62,9 +66,6 @@ document.querySelector('.signup').addEventListener('click', async () => {
     const email = document.getElementById('signupEmail').value.trim();
     const tosChecked = document.getElementById('tosCheck').checked;
 
-    // showFieldError for errors tied to a specific input field
-    // first argument is the element ID, second is the message
-    // the error appears directly under that input
 
     if (!username || !email || !password || !password2) {
         if (!username) highlightField('signupUn');
@@ -117,6 +118,12 @@ document.querySelector('.signup').addEventListener('click', async () => {
         showToast('Sign up failed: ' + error.message);
         return;
     }
+
+    document.getElementById('signupUn').value = '';
+    document.getElementById('signupPw').value = '';
+    document.getElementById('signupPw2').value = '';
+    document.getElementById('signupEmail').value = '';
+    document.getElementById('tosCheck').checked = false;
 
     document.getElementById('signupContainer').hidden = true;
     document.getElementById('confCont').hidden = false;
