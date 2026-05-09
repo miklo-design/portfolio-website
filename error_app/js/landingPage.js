@@ -54,7 +54,30 @@ document.querySelector('.signin').addEventListener('click', async () => {
     }
     window.location.href = 'Index.html';
 });
+document.getElementById('forgotPw').addEventListener('click', () => {
+    document.getElementById('forgotPwForm').hidden = false;
+});
 
+document.getElementById('sendResetBtn').addEventListener('click', async () => {
+    const email = document.getElementById('resetEmail').value.trim();
+    if (!email) {
+        highlightField('resetEmail');
+        showToast('Please enter your email address.');
+        return;
+    }
+
+    const { error } = await db.auth.resetPasswordForEmail(email, {
+        redirectTo: 'https://miklo-design.com/error_app/Index4.html'
+    });
+
+    if (error) {
+        showToast('Failed to send reset email: ' + error.message, true);
+        return;
+    }
+
+    showToast('Password reset email sent. Check your inbox.', true, 'success');
+    document.getElementById('forgotPwForm').hidden = true;
+});
 // -------------------------
 // SIGNUP
 // -------------------------
