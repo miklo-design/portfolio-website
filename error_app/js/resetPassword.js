@@ -6,17 +6,21 @@ async function handleRecoveryToken() {
 
     const params = new URLSearchParams(hash.substring(1));
     const accessToken = params.get('access_token');
+    const refreshToken = params.get('refresh_token');
     const type = params.get('type');
 
+    console.log('type:', type, 'has token:', !!accessToken);
+
     if (type === 'recovery' && accessToken) {
-        // set the session from the recovery token
-        const { error } = await db.auth.setSession({
+        const { data, error } = await db.auth.setSession({
             access_token: accessToken,
-            refresh_token: params.get('refresh_token')
+            refresh_token: refreshToken
         });
 
+        console.log('session set result:', data, error);
+
         if (error) {
-            showToast('Invalid or expired reset link.');
+            showToast('Invalid or expired reset link.', true);
         }
     }
 }
@@ -51,8 +55,7 @@ document.getElementById('pwChBtn').addEventListener('click', async () => {
         showToast('Password must be at least 6 characters.');
         return;
     }
-    const { data: { user } } = await db.auth.getUser();
-    console.log('current user before update:', user);
+
     const { error } = await db.auth.updateUser({ password: newPw });
 
     if (error) {
