@@ -142,13 +142,16 @@ document.getElementById('delFinal').addEventListener('click', async () => {
 
             if (paths.length > 0) {
                 await db.storage.from('post-media').remove(paths);
+                const { data: removeData, error: storageError } = await db.storage.from('post-media').remove(paths);
+                console.log('storage result:', removeData, 'error:', storageError);
             }
         }
     }
 
-
+    console.log('about to call RPC');
     const { error } = await db.rpc('delete_user_account');
-
+    console.log('RPC result:', error);
+    
     if (error) {
         showToast('Account deletion failed.', true);
         console.error(error);
@@ -157,5 +160,6 @@ document.getElementById('delFinal').addEventListener('click', async () => {
 
 
     await db.auth.signOut();
+    await new Promise(resolve => setTimeout(resolve, 10000));
     window.location.href = 'Index2.html';
 });
