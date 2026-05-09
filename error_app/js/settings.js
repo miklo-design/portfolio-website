@@ -119,19 +119,14 @@ document.getElementById('delFinal').addEventListener('click', async () => {
 
     const userId = session.user.id;
 
-    // delete avatar from storage
-    console.log('deleting avatar...');
+    
     await db.storage.from('avatars').remove([`${userId}.jpg`]);
-    const { error: avatarError } = await db.storage.from('avatars').remove([`${userId}.jpg`]);
-    console.log('avatar delete error:', avatarError);
 
-    // delete post media from storage
-    console.log('fetching posts...');
+
     const { data: posts } = await db
         .from('posts')
         .select('id')
         .eq('user_id', userId);
-    console.log('posts found:', posts);
 
     if (posts && posts.length > 0) {
         const { data: mediaFiles } = await db
@@ -144,18 +139,14 @@ document.getElementById('delFinal').addEventListener('click', async () => {
                 .flatMap(m => [m.media_url, m.thumbnail_url].filter(Boolean))
                 .map(url => url.split('/post-media/')[1])
                 .filter(Boolean);
-                console.log('media paths to delete:', paths);
 
             if (paths.length > 0) {
                 await db.storage.from('post-media').remove(paths);
-                const { data: removeData, error: storageError } = await db.storage.from('post-media').remove(paths);
-                console.log('storage delete result:', removeData);
-                console.log('storage delete error:', storageError);
             }
         }
     }
 
-    // call the SQL function to delete auth user
+
     const { error } = await db.rpc('delete_user_account');
 
     if (error) {
@@ -164,7 +155,7 @@ document.getElementById('delFinal').addEventListener('click', async () => {
         return;
     }
 
+
     await db.auth.signOut();
-    await new Promise(resolve => setTimeout(resolve, 10000));
     window.location.href = 'Index2.html';
 });
