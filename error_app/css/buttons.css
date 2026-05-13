@@ -21,8 +21,8 @@
 .card {
     border: none;
     outline: none;
-    background-color: #f0f0f0;
-    color: #1e1e1e;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
     width: fit-content;
     padding: 4px 16px 4px 16px;
     font-family: "Open Sans";

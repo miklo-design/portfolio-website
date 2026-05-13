@@ -44,7 +44,9 @@
         <div class="menu-cont" id="menuCont">
     <!--        <div class="user-account" id="userAccount"></div>    -->
      <!--       <div class="menu-spacer"></div> -->
-            <div class="logo" id="logo"></div>
+            <div class="logo" id="logo">
+                <img src="images/error_logoo-05-16.png">
+            </div>
             <button class="menu-btn profile-btn" id="profileBtn">
                 <span class="menu-icon">
                     <svg class="icon-svg" viewBox="0 0 24 25.37">
@@ -91,7 +93,9 @@
 
                 <div class="header-elements">
                     
-            <!--        <button class="close-global btn" id="asdfg">← BACK</button> -->
+                    <button class="close-global btn" id="backBtn" hidden>
+                        <img src="images/arrow.svg">
+                    </button> 
 
                     <div class="search-area" id="search">
 
@@ -129,7 +133,7 @@
 
             <div class="profile-container" id="profile" hidden>
 
-            <button class="close btn" id="closeProfile">← BACK</button>
+        <!--    <button class="close btn" id="closeProfile">← BACK</button> -->
 
             <div class="profile-elements">
                 <div class="user-cont"> 
@@ -167,10 +171,22 @@
 
             <div class="add-container" id="addContainer" hidden>
 
-            <button class="close btn" id="closeAdd">← BACK</button>
+    <!--        <button class="close btn" id="closeAdd">← BACK</button> -->
 
 
-            <div class="upload-elements">    
+            <div class="upload-elements">  
+                
+                <div class="media" id="media">
+                    <input type="file" class="media-upload" id="mediaUpload" multiple accept="image/*" hidden>
+
+                    <div class="drop-zone" id="dropZone">
+                        <div class="upload-label" id="uploadLabel">Drag images here</div>
+                        <div class="upload-preview" id="uploadPreview"></div>
+                    </div>
+
+                    <div class="upload-strip" id="uploadStrip" hidden>
+                    </div>
+                </div>  
                 
                 <div class="text-inputs"> 
                     <input type="text" class="post-title" placeholder="TITLE" id="postTitle">
@@ -183,21 +199,10 @@
                         <ul class="suggestions"></ul>
                     </div>
 
-                    <button class="upload-button btn" id="uploadButton">UPLOAD</button>
+                    <button class="upload-button btn" id="uploadButton">UPLOAD POST</button>
                 </div>
                 
-                <div class="media" id="media">
-                    <input type="file" class="media-upload" id="mediaUpload" multiple accept="image/*" hidden>
-
-                    <div class="drop-zone" id="dropZone">
-                        <div class="upload-label" id="uploadLabel">Drag image here</div>
-                        <div class="upload-preview" id="uploadPreview"></div>
-                    <!--    <div class="upload-overlay" id="uploadOverlay"></div> -->
-                    </div>
-
-                    <div class="upload-strip" id="uploadStrip" hidden>
-                    </div>
-                </div>        
+                      
 
 
 
@@ -210,7 +215,7 @@
             <div class="view-container" id="viewContainer" hidden>
             
                 
-                <button class="close btn" id="closeView">← BACK</button>
+    <!--            <button class="close btn" id="closeView">← BACK</button> -->
 
                 <div class="view-elements">
                     
@@ -221,7 +226,13 @@
                     <div class="view-text" id="viewText">            
                         <div class="a">
                             <div class="view-title" id="viewTitle"></div>
-                            <button class="save" id="save">SAVE</button>
+                            <button class="save" id="save">SAVE
+                            <!--    <span class="bookmark-icon">
+                                    <svg class="bookmark-svg" viewBox="0 0 16.62 24">
+                                        <path d="m0,.36v23.28c0,.2.16.36.36.36h1.16c.2,0,.38-.11.48-.29l5.83-10.83c.21-.38.75-.38.96,0l5.83,10.83c.09.18.28.29.48.29h1.16c.2,0,.36-.16.36-.36V.36c0-.2-.16-.36-.36-.36H.36c-.2,0-.36.16-.36.36Z"/>
+                                    </svg>
+                                </span> -->
+                            </button>
                         </div>
                         <div class="view-tags" id="viewTags"></div>
                         <div class="view-desc" id="viewDesc"></div>
@@ -238,7 +249,7 @@
 
             <div class="settings-container" id="settingsContainer" hidden>
             
-            <button class="close btn" id="closeSettings"> ← BACK</button>
+    <!--        <button class="close btn" id="closeSettings"> ← BACK</button> -->
 
             <div class="settings-elements">
                 
@@ -291,12 +302,16 @@
             document.getElementById('settingsContainer').hidden = true;
             
             document.getElementById(pageId).hidden = false;
-        
+            
+            const backBtn = document.getElementById('backBtn');
+            backBtn.hidden = pageId === 'main'; 
+            
             if (pageId === 'addContainer') {
             setTimeout(resizeInput, 0);
             }  
         }  
-            
+            document.getElementById('backBtn').addEventListener('click', () => showPage('main'));
+
             // opens page
             document.getElementById('addPost').addEventListener('click', () => showPage('addContainer'));
             document.getElementById('settingsBtn').addEventListener('click', () => showPage('settingsContainer'));
@@ -307,10 +322,10 @@
             });
             
             // closes page
-            document.getElementById('closeAdd').addEventListener('click', () => showPage('main'));
+        /*    document.getElementById('closeAdd').addEventListener('click', () => showPage('main'));
             document.getElementById('closeProfile').addEventListener('click', () => showPage('main'));
             document.getElementById('closeView').addEventListener('click', () => showPage('main'));
-            document.getElementById('closeSettings').addEventListener('click', () => showPage('main'));
+            document.getElementById('closeSettings').addEventListener('click', () => showPage('main')); */
             
             document.getElementById('showPosts').addEventListener('click', async () => {
                 showTab('userPosts');

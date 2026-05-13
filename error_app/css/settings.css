@@ -1,5 +1,8 @@
 .settings-elements {
-    margin: 8px;
+    margin: 56px 8px 8px 8px;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
 }
 .change-label {
     color: white;
@@ -33,10 +36,10 @@
     display: block;
 }
 .email-change {
-    margin-bottom: 32px;
+    margin-right: 56px;
 }
 .pw-change {
-    margin-bottom: 32px;
+    margin-right: 56px;
 }
 .btn.del-btn {
     background-color: #ffd5d5;

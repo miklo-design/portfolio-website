@@ -1,6 +1,6 @@
 
 .view-elements {
-    margin-top: 16px;
+    margin-top: 56px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -106,15 +106,15 @@
 
 .save {
     all: unset;
-    color: #1e1e1e;
+    color: #1e1e1e; 
     background-color: #f0f0f0;
     font-family: "Open Sans";
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 700; 
     cursor: pointer;
     position: relative;
     padding: 8px 16px 8px 16px;
-    border-radius: 8px;
+    border-radius: 2px;
     margin-left: auto;
 }
 .save:hover {
@@ -124,4 +124,14 @@
 .save.saved {
     background-color: #323232;
     color: #f0f0f0;
+}
+.bookmark-icon {
+    width: 32px;
+    height: 32px;
+}
+.bookmark-icon img {
+    object-fit: contain;
+}
+.bookmark-svg {
+    fill: #f0f0f0;
 }

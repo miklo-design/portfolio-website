@@ -15,46 +15,59 @@
     </head>
     
     <body>
-   
-            
-        <div class="signup-container" id="signupContainer">            
-            <div class="signup-elements">
-                <div class="signup-title">Sign Up</div>
-                <input type="text" id="signupUn" placeholder="Username">
-                <input type="password" id="signupPw" placeholder="Password">
-                <input type="password" id="signupPw2" placeholder="Password again">
-                <input type="text" id="signupEmail" placeholder="E-mail">
-                <div class="tos-wrap">
-                    <input type="checkbox" id="tosCheck" class="tos-check">
-                    <label for="tosCheck" class="tos-label">I accept the <a target="_blank" href="https://miklo-design.com/error_app/tos.html">Terms of Service</a> and <a target="_blank" href="https://miklo-design.com/error_app/privacy.html">Privacy Policy</a></label>                    
-                </div>
-                <button class="btn signup">Sign Up!</button>
-                <button class="btn signin-window" id="signinWindow">Already have an account?</button>
-            </div>
+        
+        <div class="background">
+            <div class="bg-feed" id="bgFeed"></div>
+            <div class="bg-blur"></div>
         </div>
         
-        
-        <div class="signin-container" id="signinContainer" hidden>
-            <div class="signin-elements">
-                <div class="signin-title">Sign In</div>
-                <div class="back-to-signup" id="backToSignup">&lt;-</div>
-                <input type="text" placeholder="E-mail address">
-                <input type="password" placeholder="Password">
-                <button class="btn forgot" id="forgotPw">Forgot password?</button>
-                <div id="forgotPwForm" hidden>
-                    <input type="text" id="resetEmail" placeholder="Your email address">
-                    <button class="btn" id="sendResetBtn">Send reset link</button>
+        <div class="landing-cont">
+            <div class="landing-logo">
+                <img src="images/error_logoo-05-16.png" >
+            </div>
+
+            <div class="landing-wrap">
+                <div class="signup-container" id="signupContainer">            
+                    <div class="signup-elements">
+                        <div class="signup-title">Sign Up</div>
+                        <input type="text" id="signupUn" placeholder="Username">
+                        <input type="password" id="signupPw" placeholder="Password">
+                        <input type="password" id="signupPw2" placeholder="Password again">
+                        <input type="text" id="signupEmail" placeholder="E-mail">
+                        <div class="tos-wrap">
+                            <input type="checkbox" id="tosCheck" class="tos-check">
+                            <label for="tosCheck" class="tos-label">I accept the <a target="_blank" href="https://miklo-design.com/error_app/tos.html">Terms of Service</a> and <a target="_blank" href="https://miklo-design.com/error_app/privacy.html">Privacy Policy</a></label>                    
+                        </div>
+                        <button class="btn signup">Sign Up!</button>
+                        <button class="btn signin-window" id="signinWindow">Already have an account?</button>
+                    </div>
                 </div>
-                <button class="btn signin">Sign In!</button>
-            </div>
-        </div>
-            
-        <div class="conf-cont" id="confCont" hidden>
-            <div class="conf-elements">
-                <div class="conf-title">Please Confirm Your Email!</div>
-                <div class="conf-text">We have sent you a confirmation link. Please check your emails and click it to finish signing up!</div>
-                <button class="btn conf-back" id="confBack">Back to Sign Up</button>
-            </div>
+
+
+                <div class="signin-container" id="signinContainer" hidden>
+                    <div class="signin-elements">
+                        <div class="signin-title">Sign In</div>
+                        <div class="back-to-signup" id="backToSignup">Back to Sign up ...</div>
+                        <input type="text" placeholder="E-mail address">
+                        <input type="password" placeholder="Password">
+                        <button class="btn forgot" id="forgotPw">Forgot password?</button>
+                        <div id="forgotPwForm" hidden>
+                            <input type="text" id="resetEmail" placeholder="Your email address">
+                            <button class="btn" id="sendResetBtn">Send reset link</button>
+                        </div>
+                        <button class="btn signin">Sign In!</button>
+                    </div>
+                </div>
+
+                <div class="conf-cont" id="confCont" hidden>
+                    <div class="conf-elements">
+                        <div class="conf-title">Please Confirm Your Email!</div>
+                        <div class="conf-text">We have sent you a confirmation link. Please check your emails and click it to finish signing up!</div>
+                        <button class="btn conf-back" id="confBack">Back to Sign Up</button>
+                    </div>
+                </div>
+
+            </div>   
         </div>
         
         <script>
@@ -76,6 +89,9 @@
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="js/database.js"></script>
         <script src="js/notif.js"></script>
+        <script src="js/feedPositioning2.js"></script>
+        <script src="js/bgFeed.js"></script>
         <script src="js/landingPage.js"></script>
+        
     </body>
 </html>

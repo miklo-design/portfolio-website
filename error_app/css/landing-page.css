@@ -1,9 +1,39 @@
 body {
-    background-color: black;
+    background-color: #1e1e1e;
+    overflow-y: hidden;
+    margin: 0;
+}
+.background {
+    width: 100vw;
+}
+.landing-cont {
     height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+.landing-wrap {
+    height: fit-content;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.landing-logo {
+    height: 80px;
+    width: 80px;
+    position: static;
+    z-index: 2;
+}
+.landing-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 input:not([type="checkbox"]) {
@@ -13,7 +43,7 @@ input:not([type="checkbox"]) {
     background-color: #2e2e2e;
     color: #f3f3f3;
     padding: 8px 16px 8px 16px;
-    border-radius: 8px;
+    border-radius: 2px;
     margin-bottom: 16px;
 }
 /*
@@ -33,6 +63,9 @@ button {
 .signup-elements {
     display: grid;
     transform: translateY(-2vw);
+    background-color: black;
+    padding: 32px;
+    border-radius: 2px;
 }
 .signup-title {
     font-family: Arial, Helvetica, sans-serif;
@@ -62,6 +95,9 @@ button {
 .signin-elements {
     display: grid;
     transform: translateY(-2vw);
+    background-color: black;
+    padding: 32px;
+    border-radius: 2px;
 }
 .signin-title {
     font-family: Arial, Helvetica, sans-serif;
@@ -72,11 +108,14 @@ button {
 }
 .back-to-signup {
     padding: 4px 8px 4px 8px;
-    background-color: #f3f3f3;
-    border-radius: 8px;
-    width: 2vw;
+    border-radius: 2px;
     margin-bottom: 16px;
     cursor: pointer;
+    font-family: "Open Sans";
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #f0f0f0;
+    background-color: #1e1e1e;
 }
 .back-to-signup:hover {
     background-color: #2e2e2e;
@@ -140,4 +179,51 @@ button {
     font-size: 1rem;
     font-weight: 600;
      margin-bottom: 32px;
+}
+
+
+.bg-feed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+.signup-container,
+.signin-container,
+.conf-cont {
+    position: relative;
+    z-index: 2;
+}
+
+.post {
+    position: absolute;
+}
+.size-portrait-t1 { width: 18vw; height: 36vw; }
+.size-portrait-t2 { width: 13vw; height: 26vw; }
+.size-lands-t1 { width: 36vw; height: 18vw; }
+.size-lands-t2 { width: 26vw; height: 13vw; }
+.size-square-t1 { width: 18vw; height: 18vw; }
+.size-square-t2 { width: 13vw; height: 13vw; }
+
+.post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

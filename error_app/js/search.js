@@ -112,28 +112,24 @@ async function runSearch() {
     let matchingPostIds = null;
 
     if (activeTagIds.length > 0) {
-        const { data: taggedPosts, error: tagError } = await db
-            .from('post_tags')
-            .select('post_id')
-            .in('tag_id', activeTagIds);
+    const { data: taggedPosts, error: tagError } = await db
+        .from('post_tags')
+        .select('post_id')
+        .in('tag_id', activeTagIds);
 
-        if (tagError) {
-            console.error('Tag filter error:', tagError);
-            return;
-        }
-
-        const idCounts = {};
-        taggedPosts.forEach(row => {
-            idCounts[row.post_id] = (idCounts[row.post_id] || 0) + 1;
-        });
-
-        matchingPostIds = Object.keys(idCounts).filter(id => idCounts[id] === activeTagIds.length);
-
-        if (matchingPostIds.length === 0) {
-            showNoResults();
-            return;
-        }
+    if (tagError) {
+        console.error('Tag filter error:', tagError);
+        return;
     }
+
+    // collect all unique post IDs that have ANY of the selected tags
+    matchingPostIds = [...new Set(taggedPosts.map(row => row.post_id))];
+
+    if (matchingPostIds.length === 0) {
+        showNoResults();
+        return;
+    }
+}
 
     if (currentQuery.length > 0) {
         const allMatchIds = new Set();

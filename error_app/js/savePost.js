@@ -30,6 +30,8 @@ function updateSaveButton() {
     }
 }
 
+
+
 document.getElementById('save').addEventListener('click', async () => {
     const { data: { session } } = await db.auth.getSession();
     if (!session || !currentPostId) return;
